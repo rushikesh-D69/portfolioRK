@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rushikesh D - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Rushikesh D</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div id="particles-js" class="particles-container"></div>
+        <div class="hero-background">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Rushikesh</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span id="typewriter"></span><span class="cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    ECE student with a passion for building from the ground up—be it analog circuits on an oscilloscope, microcontroller games, or intelligent systems that learn from data. I love combining hardware and software to engineer smart, real-time solutions.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://github.com/rushikesh-D69" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/d-rushikesh/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:rikki0401hauman@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know more about my background and passion for technology</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm an Electronics and Communication Engineering student at Amrita Vishwa Vidyapeetham, Bengaluru. My interests lie at the intersection of embedded systems, machine learning, and analog hardware.
+                    </p>
+                    <p>
+                        I'm also a weeb and otaku—so creativity, curiosity, and a love for design and flow are always part of my projects.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h4>Education</h4>
+                                <p>B.Tech Electronics & Communication<br>Amrita Vishwa Vidyapeetham</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h4>Specialization</h4>
+                                <p>Embedded Systems<br>Analog Circuit Design</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h4>Passion</h4>
+                                <p>Robotics & Automation<br>Creative Engineering</p>
+                                <p>Innovation<br>Problem Solving</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">A showcase of my work spanning embedded systems, web development, and machine learning</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project-images/tic-tac-toe.jpg" alt="Tic-Tac-Toe Using LPC2138">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/rushikesh-D69/Tic-Tac-Toe-Using-LPC2138" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Tic-Tac-Toe Using LPC2138</h3>
+                        <p class="project-description"><em>Apr 2025</em><br>Developed a classic Tic-Tac-Toe game on the LPC2138 microcontroller, utilizing a 7-segment display and button inputs for user interaction.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Embedded C</span>
+                            <span class="tech-tag">ARM7</span>
+                            <span class="tech-tag">LPC2138</span>
+                            <span class="tech-tag">7-Segment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project-images/dino-game.png" alt="Dino Game Using LPC2138">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/rushikesh-D69/Dino-Game-Using-LPC2138" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Dino Game Using LPC2138</h3>
+                        <p class="project-description"><em>Apr 2025</em><br>This project implements a simple Dino Jump game using the LPC2138 ARM7 microcontroller and a 16x2 character LCD. The game mimics the classic side-scrolling dinosaur game, with jump controls, scoring, and obstacle collision logic.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Embedded C</span>
+                            <span class="tech-tag">ARM7</span>
+                            <span class="tech-tag">LPC2138</span>
+                            <span class="tech-tag">LCD</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project-images/chords.jpeg" alt="Music Recommendation System Based on Acoustic Features">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/rushikesh-D69/Chord-Recommendation-System" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Music Recommendation System Based on Acoustic Features</h3>
+                        <p class="project-description"><em>Mar 2025 - Apr 2025</em><br>Music Recommendation System Based on Acoustic Features using CNN.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">Music</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project-images/drip.jpg" alt="DRIP – Dynamic Root Locus Integration Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/rushikesh-D69/DRIP-Simulator" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">DRIP – Dynamic Root Locus Integration Platform</h3>
+                        <p class="project-description"><em>Apr 2025</em><br>DRIP is a web application built using Streamlit that enables users to interactively perform Root Locus analysis of control systems.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Control Systems</span>
+                            <span class="tech-tag">Web App</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project-images/analog-piano.jpg" alt="Electronic Piano">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/rushikesh-D69/Electronic-Piano" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Electronic Piano</h3>
+                        <p class="project-description"><em>Mar 2025</em><br>Developed an Electronic piano of 8 keys using only Analog circuits.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Analog</span>
+                            <span class="tech-tag">Circuit Design</span>
+                            <span class="tech-tag">Music</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project-images/ODE-solver.jpeg" alt="ODE Solver using OP-AMPS">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/rushikesh-D69/ODE-Solver-OpAmp" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ODE Solver using OP-AMPS</h3>
+                        <p class="project-description"><em>Feb 2025</em><br>Designed and simulated an analog circuit to solve second-order ordinary differential equations (ODEs) using operational amplifiers.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Analog</span>
+                            <span class="tech-tag">Op-Amp</span>
+                            <span class="tech-tag">Simulation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project-images/5DOF.jpg" alt="5DOF Robotic Arm with Bluetooth Controlled App">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1hbT6HnY4lBHV2FXyGStsSIo-WKb4RI3z?usp=sharing" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">5DOF Robotic Arm with Bluetooth Controlled App</h3>
+                        <p class="project-description"><em>Apr 2024</em><br>Developed a custom Android app to send commands for precise movement control. Implemented a motion-saving feature, allowing the arm to record movements and repeat them on command for automation.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Robotics</span>
+                            <span class="tech-tag">Android</span>
+                            <span class="tech-tag">Bluetooth</span>
+                            <span class="tech-tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://raw.githubusercontent.com/rushikesh-D69/Whatsapp-Reader-Flutter-/main/preview.png" alt="WhatsApp Reader Flutter">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/rushikesh-D69/Whatsapp-Reader-Flutter-" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">WhatsApp Reader Flutter</h3>
+                        <p class="project-description"><em>Jun 2024</em><br>The WhatsApp Translator App is a Flutter-based tool that translates selected WhatsApp messages with a UI styled like native chats. It features real-time language detection, accurate translations, and text-to-speech, enabling seamless multilingual communication within WhatsApp.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Translation</span>
+                            <span class="tech-tag">Mobile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Experience & Education</h2>
+                <p class="section-subtitle">My journey through education and personal development in technology</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Electronics & Communication Engineering Student</h3>
+                        <h4 class="timeline-company">Amrita Vishwa Vidyapeetham, Bengaluru</h4>
+                        <p class="timeline-description">
+                            Pursuing Bachelor of Technology in Electronics & Communication Engineering with a focus on embedded systems, analog/digital design, and intelligent systems.
+                        </p>
+                        <ul class="timeline-achievements">
+                            <li>Strong foundation in electronics, circuits, and embedded programming</li>
+                            <li>Hands-on experience with microcontrollers, signal processing, and IoT</li>
+                            <li>Active participation in technical fests, robotics, and project expos</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Project Developer</h3>
+                        <h4 class="timeline-company">Personal Projects</h4>
+                        <p class="timeline-description">
+                            Developing various personal and academic projects spanning embedded systems, analog circuits, IoT, and machine learning.
+                        </p>
+                        <ul class="timeline-achievements">
+                            <li>Built embedded systems projects using ARM microcontrollers</li>
+                            <li>Created analog and digital circuit prototypes</li>
+                            <li>Implemented ML models and IoT solutions for real-world problems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">A comprehensive overview of my technical skills and proficiency areas</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Core Technical Skills</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Embedded Systems (ARM7, LPC2138)</li>
+                        <li>Analog & Digital Circuit Design</li>
+                        <li>Machine Learning (Python ML stack)</li>
+                        <li>Internet of Things (IoT)</li>
+                        <li>Control Systems & Signal Processing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Programming & Scripting</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>C / C++</li>
+                        <li>Java</li>
+                        <li>Arduino</li>
+                        <li>MATLAB</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Development Tools & Frameworks</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Flutter (Dart)</li>
+                        <li>Streamlit</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>Proteus Design Suite</li>
+                        <li>NI Multisim</li>
+                        <li>LTSpice</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Platforms & Hardware</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Raspberry Pi</li>
+                        <li>ARM Microcontrollers</li>
+                        <li>Linux / Bash</li>
+                        <li>Git & GitHub</li>
+                        <li>VS Code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">I'm always open to discussing new opportunities and interesting projects</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>
+                        Whether you have a project in mind, want to collaborate, or just want to say hello,
+                        I'd love to hear from you. Feel free to reach out through any of the channels below.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:rikki0401hauman@gmail.com">rikki0401hauman@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <a href="tel:+91XXXXXXXXX">+91 XXXXX XXXXX</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <span>Bengaluru, India</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <h4>Find me on</h4>
+                        <div class="social-links">
+                            <a href="https://github.com/rushikesh-D69" target="_blank" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/d-rushikesh/" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="mailto:rikki0401hauman@gmail.com" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Rushikesh D. Built with HTML, CSS, and JavaScript.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="custom-cursor"></div>
+    <div class="cursor-ring"></div>
+    <script src="script.js"></script>
+</body>
+</html>
