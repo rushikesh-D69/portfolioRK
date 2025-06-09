@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     },
     "retina_detect": false
-  });
+  }); 
 
   // Mobile menu toggle
   const hamburger = document.getElementById('hamburger');
