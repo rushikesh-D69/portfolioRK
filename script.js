@@ -457,6 +457,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   animateRing();
 
+  // Add class to body to hide default cursor after custom cursor is initialized
+  document.body.classList.add('custom-cursor-enabled');
+
   // Magnetic effect
   function addMagneticEffect(selector) {
     document.querySelectorAll(selector).forEach(el => {
@@ -486,6 +489,26 @@ document.addEventListener('DOMContentLoaded', function() {
       ring.classList.remove('scrolling');
       cursor.classList.remove('scrolling');
     }, 300);
+  });
+
+  // Projects toggle functionality
+  const toggleProjects = document.getElementById('toggle-projects');
+  const projectsMore = document.getElementById('projects-more');
+  const moreText = toggleProjects.querySelector('.more-text');
+  const lessText = toggleProjects.querySelector('.less-text');
+  const toggleIcon = toggleProjects.querySelector('i');
+
+  toggleProjects.addEventListener('click', () => {
+    projectsMore.classList.toggle('active');
+    toggleProjects.classList.toggle('active');
+    
+    if (projectsMore.classList.contains('active')) {
+      moreText.style.display = 'none';
+      lessText.style.display = 'inline';
+    } else {
+      moreText.style.display = 'inline';
+      lessText.style.display = 'none';
+    }
   });
 });
 
