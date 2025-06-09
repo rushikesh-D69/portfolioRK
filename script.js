@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-          e.preventDefault();
+          // e.preventDefault(); // Temporarily commented out for debugging
           const target = document.querySelector(this.getAttribute('href'));
           if (target) {
               const offsetTop = target.offsetTop - 70; // Account for fixed navbar
@@ -434,82 +434,64 @@ document.addEventListener('DOMContentLoaded', function() {
   const cursor = document.querySelector('.custom-cursor');
   const ring = document.querySelector('.cursor-ring');
 
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
+  if (cursor && ring) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
 
-  // Move cursor and ring
-  window.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
-  });
+    // Move cursor and ring
+    window.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
 
-  function animateRing() {
-    // Smooth follow
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.left = ringX + 'px';
-    ring.style.top = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
+    function animateRing() {
+      // Smooth follow
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
 
-  // Add class to body to hide default cursor after custom cursor is initialized
-  document.body.classList.add('custom-cursor-enabled');
+    // Add class to body to hide default cursor after custom cursor is initialized
+    document.body.classList.add('custom-cursor-enabled');
 
-  // Magnetic effect
-  function addMagneticEffect(selector) {
-    document.querySelectorAll(selector).forEach(el => {
-      el.addEventListener('mouseenter', e => {
-        const rect = el.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        ring.classList.add('magnetic');
-        ring.style.left = centerX + 'px';
-        ring.style.top = centerY + 'px';
+    // Magnetic effect
+    function addMagneticEffect(selector) {
+      document.querySelectorAll(selector).forEach(el => {
+        el.addEventListener('mouseenter', e => {
+          const rect = el.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          ring.classList.add('magnetic');
+          ring.style.left = centerX + 'px';
+          ring.style.top = centerY + 'px';
+        });
+        el.addEventListener('mouseleave', e => {
+          ring.classList.remove('magnetic');
+        });
       });
-      el.addEventListener('mouseleave', e => {
-        ring.classList.remove('magnetic');
-      });
+    }
+    addMagneticEffect('.btn');
+    addMagneticEffect('.project-card');
+
+    // Cursor ring scroll animation
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      ring.classList.add('scrolling');
+      cursor.classList.add('scrolling');
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        ring.classList.remove('scrolling');
+        cursor.classList.remove('scrolling');
+      }, 300);
     });
   }
-  addMagneticEffect('.btn');
-  addMagneticEffect('.project-card');
-
-  // Cursor ring scroll animation
-  let scrollTimeout;
-  window.addEventListener('scroll', () => {
-    ring.classList.add('scrolling');
-    cursor.classList.add('scrolling');
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      ring.classList.remove('scrolling');
-      cursor.classList.remove('scrolling');
-    }, 300);
-  });
-
-  // Projects toggle functionality
-  const toggleProjects = document.getElementById('toggle-projects');
-  const projectsMore = document.getElementById('projects-more');
-  const moreText = toggleProjects.querySelector('.more-text');
-  const lessText = toggleProjects.querySelector('.less-text');
-  const toggleIcon = toggleProjects.querySelector('i');
-
-  toggleProjects.addEventListener('click', () => {
-    projectsMore.classList.toggle('active');
-    toggleProjects.classList.toggle('active');
-    
-    if (projectsMore.classList.contains('active')) {
-      moreText.style.display = 'none';
-      lessText.style.display = 'inline';
-    } else {
-      moreText.style.display = 'inline';
-      lessText.style.display = 'none';
-    }
-  });
 });
 
 // Utility function to check if element is in viewport
