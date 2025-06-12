@@ -6,11 +6,12 @@
     <title>All Projects - Rushikesh D</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> -->
 </head>
 <body>
-    <!-- Navigation (replicated from index.html for consistency) -->
+    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -51,251 +52,47 @@
                 <h2 class="section-title">All My Projects</h2>
                 <p class="section-subtitle">A comprehensive showcase of my work spanning various domains</p>
             </div>
-            <div class="projects-grid">
-                <!-- Project Card 1: Tic-Tac-Toe Using LPC2138 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project-images/tic-tac-toe.jpg" alt="Tic-Tac-Toe Using LPC2138">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/rushikesh-D69/Tic-Tac-Toe-Using-LPC2138" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Tic-Tac-Toe Using LPC2138</h3>
-                        <p class="project-description"><em>Apr 2025</em><br>Developed a classic Tic-Tac-Toe game on the LPC2138 microcontroller, utilizing a 7-segment display and button inputs for user interaction.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Embedded C</span>
-                            <span class="tech-tag">ARM7</span>
-                            <span class="tech-tag">LPC2138</span>
-                            <span class="tech-tag">7-Segment</span>
-                        </div>
-                    </div>
+
+            <!-- Search and Filter Section -->
+            <div class="projects-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="project-search" placeholder="Search projects...">
                 </div>
-                <!-- Project Card 2: Dino Game Using LPC2138 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project-images/dino-game.png" alt="Dino Game Using LPC2138">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/rushikesh-D69/Dino-Game-Using-LPC2138" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Dino Game Using LPC2138</h3>
-                        <p class="project-description"><em>Apr 2025</em><br>This project implements a simple Dino Jump game using the LPC2138 ARM7 microcontroller and a 16x2 character LCD. The game mimics the classic side-scrolling dinosaur game, with jump controls, scoring, and obstacle collision logic.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Embedded C</span>
-                            <span class="tech-tag">ARM7</span>
-                            <span class="tech-tag">LPC2138</span>
-                            <span class="tech-tag">LCD</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card 3: Music Recommendation System Based on Acoustic Features -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project-images/chords.jpeg" alt="Music Recommendation System Based on Acoustic Features">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/rushikesh-D69/Music-Recommendation-System-Based-on-Acoustic-Features" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://mrsboafk.streamlit.app/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Music Recommendation System Based on Acoustic Features</h3>
-                        <p class="project-description"><em>Mar 2025 - Apr 2025</em><br>Music Recommendation System Based on Acoustic Features using CNN.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">CNN</span>
-                            <span class="tech-tag">Music</span>
-                            <span class="tech-tag">ML</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card 4: DRIP – Dynamic Root Locus Integration Platform -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project-images/drip.jpg" alt="DRIP – Dynamic Root Locus Integration Platform">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/rushikesh-D69/DRIP-root-locus-app" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://dripsimu.streamlit.app/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">DRIP – Dynamic Root Locus Integration Platform</h3>
-                        <p class="project-description"><em>Apr 2025</em><br>DRIP is a web application built using Streamlit that enables users to interactively perform Root Locus analysis of control systems.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Streamlit</span>
-                            <span class="tech-tag">Control Systems</span>
-                            <span class="tech-tag">Web App</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card 5: Electronic Piano -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project-images/analog-piano.jpg" alt="Electronic Piano">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://aseblr-my.sharepoint.com/personal/bl_en_u4ece23205_bl_students_amrita_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2Fbl%5Fen%5Fu4ece23205%5Fbl%5Fstudents%5Famrita%5Fedu%2FDocuments%2FSTudy%2FB%2ETech%2F2nd%20Year%2F4th%20Semester%2FCircuits%20and%20Communication%20Laboratory%2FSystem%20Level%20Design%2FPiano2%2EMOV&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Efae99b31%2D308b%2D42f6%2D8d66%2D3e9f214cc66c&ct=1749475751163&or=OWA%2DNT%2DMail&cid=f1e287c5%2D93e3%2D3fd4%2D4151%2D4718c5e2be5c&ga=1" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Electronic Piano</h3>
-                        <p class="project-description"><em>Mar 2025</em><br>Developed an Electronic piano of 8 keys using only Analog circuits.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Analog</span>
-                            <span class="tech-tag">Circuit Design</span>
-                            <span class="tech-tag">Music</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card 6: ODE Solver using OP-AMPS -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project-images/ODE-solver.jpeg" alt="ODE Solver using OP-AMPS">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://www.multisim.com/content/MZHrGkWgD7FBjiHoUV2unF/ode-solver" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">ODE Solver using OP-AMPS</h3>
-                        <p class="project-description"><em>Feb 2025</em><br>Designed and simulated an analog circuit to solve second-order ordinary differential equations (ODEs) using operational amplifiers.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Analog</span>
-                            <span class="tech-tag">Op-Amp</span>
-                            <span class="tech-tag">Simulation</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card 7: 5DOF Robotic Arm with Bluetooth Controlled App -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project-images/5DOF.jpg" alt="5DOF Robotic Arm with Bluetooth Controlled App">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://drive.google.com/drive/folders/1hbT6HnY4lBHV2FXyGStsSIo-WKb4RI3z?usp=sharing" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">5DOF Robotic Arm with Bluetooth Controlled App</h3>
-                        <p class="project-description"><em>Apr 2024</em><br>Developed a custom Android app to send commands for precise movement control. Implemented a motion-saving feature, allowing the arm to record movements and repeat them on command for automation.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Robotics</span>
-                            <span class="tech-tag">Android</span>
-                            <span class="tech-tag">Bluetooth</span>
-                            <span class="tech-tag">Automation</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card 8: WhatsApp Reader Flutter -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://raw.githubusercontent.com/rushikesh-D69/Whatsapp-Reader-Flutter-/main/preview.png" alt="WhatsApp Reader Flutter">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/rushikesh-D69/Whatsapp-Reader-Flutter-" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">WhatsApp Reader Flutter</h3>
-                        <p class="project-description"><em>Jun 2024</em><br>The WhatsApp Translator App is a Flutter-based tool that translates selected WhatsApp messages with a UI styled like native chats. It features real-time language detection, accurate translations, and text-to-speech, enabling seamless multilingual communication within WhatsApp.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">Translation</span>
-                            <span class="tech-tag">Mobile</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card 9: ML-Based Anti-lock Braking System -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project-images/abs-system.jpg" alt="ML-Based Anti-lock Braking System">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/rushikesh-D69/ML-Based-Anti-lock-Braking-System-ABS-" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">ML-Based Anti-lock Braking System</h3>
-                        <p class="project-description"><em>Mar 2025</em><br>A novel machine learning-enhanced Anti-lock Braking System that uses real-time road surface classification to adaptively control brake pressure. Achieved 85.6% test accuracy with real-time prediction capabilities of 56,000+ predictions per second.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">MATLAB</span>
-                            <span class="tech-tag">Simulink</span>
-                            <span class="tech-tag">ML</span>
-                            <span class="tech-tag">Control Systems</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card 10: NekOPay - Transaction Management App (This is the one I moved from index.html) -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="project-images/nekopay.jpg" alt="NekOPay - Transaction Management App">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/rushikesh-D69/NekOPay---FLUTTER" target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">NekOPay - Transaction Management App</h3>
-                        <p class="project-description"><em>Mar 2025</em><br>A Flutter application for managing and visualizing transactions with features like adding, deleting, and sorting transactions. Includes local storage using SharedPreferences and calculates total amount spent with a beautiful UI.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">SharedPreferences</span>
-                            <span class="tech-tag">Mobile App</span>
-                            <span class="tech-tag">UI/UX</span>
-                        </div>
-                    </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="embedded">Embedded Systems</button>
+                    <button class="filter-btn" data-filter="iot">IoT</button>
+                    <button class="filter-btn" data-filter="analog">Analog</button>
+                    <button class="filter-btn" data-filter="digital">Digital</button>
+                    <button class="filter-btn" data-filter="vlsi">VLSI</button>
+                    <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                    <button class="filter-btn" data-filter="app-dev">App Development</button>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="index.html" class="btn btn-secondary">Back to Home</a>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                <!-- Project cards will be dynamically loaded here -->
+            </div>
+
+            <!-- No Projects Message -->
+            <div class="no-projects-message" style="display: none;">
+                <h3 class="no-projects-title">The Tome of Projects is Empty... For Now!</h3>
+                <p class="no-projects-text">But fear not, young wizard! The runes are aligning and new scrolls of knowledge shall appear soon.</p>
+            </div>
+
+            <!-- Back to Home Button -->
+            <div class="back-to-home">
+                <a href="index.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer (replicated from index.html for consistency) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -307,5 +104,194 @@
     <div class="custom-cursor"></div>
     <div class="cursor-ring"></div>
     <script src="script.js"></script>
+    <script>
+        // Project data
+        const projects = [
+            {
+                title: "Tic-Tac-Toe Using LPC2138",
+                description: "Developed a classic Tic-Tac-Toe game on the LPC2138 microcontroller, utilizing a 7-segment display and button inputs for user interaction.",
+                image: "project-images/tic-tac-toe.jpg",
+                date: "Apr 2025",
+                category: ["embedded"],
+                tags: ["Embedded C", "ARM7", "LPC2138", "7-Segment"],
+                github: "https://github.com/rushikesh-D69/Tic-Tac-Toe-Using-LPC2138",
+                demo: null
+            },
+            {
+                title: "Dino Game Using LPC2138",
+                description: "This project implements a simple Dino Jump game using the LPC2138 ARM7 microcontroller and a 16x2 character LCD. The game mimics the classic side-scrolling dinosaur game, with jump controls, scoring, and obstacle collision logic.",
+                image: "project-images/dino-game.png",
+                date: "Apr 2025",
+                category: ["embedded"],
+                tags: ["Embedded C", "ARM7", "LPC2138", "LCD"],
+                github: "https://github.com/rushikesh-D69/Dino-Game-Using-LPC2138",
+                demo: null
+            },
+            {
+                title: "Music Recommendation System Based on Acoustic Features",
+                description: "Music Recommendation System Based on Acoustic Features using CNN.",
+                image: "project-images/chords.jpeg",
+                date: "Mar 2025 - Apr 2025",
+                category: ["ml"],
+                tags: ["Python", "CNN", "Music", "ML"],
+                github: "https://github.com/rushikesh-D69/Music-Recommendation-System-Based-on-Acoustic-Features",
+                demo: "https://mrsboafk.streamlit.app/"
+            },
+            {
+                title: "DRIP – Dynamic Root Locus Integration Platform",
+                description: "DRIP is a web application built using Streamlit that enables users to interactively perform Root Locus analysis of control systems.",
+                image: "project-images/drip.jpg",
+                date: "Apr 2025",
+                category: ["app-dev", "web"],
+                tags: ["Python", "Streamlit", "Control Systems", "Web App"],
+                github: "https://github.com/rushikesh-D69/DRIP-root-locus-app",
+                demo: "https://dripsimu.streamlit.app/"
+            },
+            {
+                title: "Electronic Piano",
+                description: "Developed an Electronic piano of 8 keys using only Analog circuits.",
+                image: "project-images/analog-piano.jpg",
+                date: "Mar 2025",
+                category: ["analog"],
+                tags: ["Analog", "Circuit Design", "Music"],
+                github: null,
+                demo: "https://aseblr-my.sharepoint.com/personal/bl_en_u4ece23205_bl_students_amrita_edu/_layouts/15/stream.aspx?id=%2Fpersonal%2Fbl%5Fen%5Fu4ece23205%5Fbl%5Fstudents%5Famrita%5Fedu%2FDocuments%2FSTudy%2FB%2ETech%2F2nd%20Year%2F4th%20Semester%2FCircuits%20and%20Communication%20Laboratory%2FSystem%20Level%20Design%2FPiano2%2EMOV&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Efae99b31%2D308b%2D42f6%2D8d66%2D3e9f214cc66c&ct=1749475751163&or=OWA%2DNT%2DMail&cid=f1e287c5%2D93e3%2D3fd4%2D4151%2D4718c5e2be5c&ga=1"
+            },
+            {
+                title: "ODE Solver using OP-AMPS",
+                description: "Designed and simulated an analog circuit to solve second-order ordinary differential equations (ODEs) using operational amplifiers.",
+                image: "project-images/ODE-solver.jpeg",
+                date: "Feb 2025",
+                category: ["analog"],
+                tags: ["Analog", "Op-Amp", "Simulation"],
+                github: null,
+                demo: "https://www.multisim.com/content/MZHrGkWgD7FBjiHoUV2unF/ode-solver"
+            },
+            {
+                title: "5DOF Robotic Arm with Bluetooth Controlled App",
+                description: "Developed a custom Android app to send commands for precise movement control. Implemented a motion-saving feature, allowing the arm to record movements and repeat them on command for automation.",
+                image: "project-images/5DOF.jpg",
+                date: "Apr 2024",
+                category: ["embedded", "iot"],
+                tags: ["Robotics", "Android", "Bluetooth", "Automation"],
+                github: null,
+                demo: "https://drive.google.com/drive/folders/1hbT6HnY4lBHV2FXyGStsSIo-WKb4RI3z?usp=sharing"
+            },
+            {
+                title: "WhatsApp Reader Flutter",
+                description: "The WhatsApp Translator App is a Flutter-based tool that translates selected WhatsApp messages with a UI styled like native chats. It features real-time language detection, accurate translations, and text-to-speech, enabling seamless multilingual communication within WhatsApp.",
+                image: "https://raw.githubusercontent.com/rushikesh-D69/Whatsapp-Reader-Flutter-/main/preview.png",
+                date: "Jun 2024",
+                category: ["app-dev", "mobile"],
+                tags: ["Flutter", "Dart", "Translation", "Mobile"],
+                github: "https://github.com/rushikesh-D69/Whatsapp-Reader-Flutter-",
+                demo: null
+            },
+            {
+                title: "ML-Based Anti-lock Braking System",
+                description: "A novel machine learning-enhanced Anti-lock Braking System that uses real-time road surface classification to adaptively control brake pressure. Achieved 85.6% test accuracy with real-time prediction capabilities of 56,000+ predictions per second.",
+                image: "project-images/abs-system.jpg",
+                date: "Mar 2025",
+                category: ["ml", "embedded"],
+                tags: ["Python", "MATLAB", "Simulink", "ML", "Control Systems"],
+                github: "https://github.com/rushikesh-D69/ML-Based-Anti-lock-Braking-System-ABS-",
+                demo: null
+            },
+            {
+                title: "NekOPay - Transaction Management App",
+                description: "A Flutter application for managing and visualizing transactions with features like adding, deleting, and sorting transactions. Includes local storage using SharedPreferences and calculates total amount spent with a beautiful UI.",
+                image: "project-images/nekopay.jpg",
+                date: "Mar 2025",
+                category: ["app-dev", "mobile"],
+                tags: ["Flutter", "Dart", "SharedPreferences", "Mobile App", "UI/UX"],
+                github: "https://github.com/rushikesh-D69/NekOPay---FLUTTER",
+                demo: null
+            }
+        ];
+
+        // Function to create project card
+        function createProjectCard(project) {
+            return `
+                <div class="project-card" data-category="${project.category.join(' ')}">
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                ${project.github ? `
+                                    <a href="${project.github}" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                ` : ''}
+                                ${project.demo ? `
+                                    <a href="${project.demo}" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-description">
+                            <em>${project.date}</em><br>
+                            ${project.description}
+                        </p>
+                        <div class="project-tech">
+                            ${project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to render projects
+        function renderProjects(filteredProjects = projects) {
+            const projectsGrid = document.querySelector('.projects-grid');
+            const noProjectsMessage = document.querySelector('.no-projects-message');
+            
+            if (filteredProjects.length === 0) {
+                projectsGrid.innerHTML = '';
+                noProjectsMessage.style.display = 'block';
+            } else {
+                projectsGrid.innerHTML = filteredProjects.map(project => createProjectCard(project)).join('');
+                noProjectsMessage.style.display = 'none';
+            }
+        }
+
+        // Initial render
+        renderProjects();
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+                const filteredProjects = filter === 'all' 
+                    ? projects 
+                    : projects.filter(project => project.category.includes(filter));
+                
+                renderProjects(filteredProjects);
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('project-search');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+            const filteredProjects = projects.filter(project => 
+                (activeFilter === 'all' || project.category.includes(activeFilter)) &&
+                (project.title.toLowerCase().includes(searchTerm) ||
+                project.description.toLowerCase().includes(searchTerm) ||
+                project.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+            );
+            renderProjects(filteredProjects);
+        });
+    </script>
 </body>
 </html>
