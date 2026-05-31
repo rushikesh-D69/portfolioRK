@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { socialLinks, typewriterTexts } from "@/data/nav";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import LiquidEther from "@/components/LiquidEther";
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState("");
@@ -11,35 +12,7 @@ export default function Hero() {
   const textIdx  = useRef(0);
   const charIdx  = useRef(0);
 
-  /* particles */
-  useEffect(() => {
-    const init = () => {
-      if (typeof window.particlesJS === "function") {
-        window.particlesJS("particles-js", {
-          particles: {
-            number: { value: 6, density: { enable: true, value_area: 800 } },
-            color:  { value: "#3b82f6" },
-            shape:  { type: "polygon", polygon: { nb_sides: 6 } },
-            opacity:{ value: 0.05, random: true },
-            size:   { value: 160, anim: { enable: true, speed: 10, size_min: 40 } },
-            line_linked: { enable: false },
-            move:   { enable: true, speed: 8, out_mode: "out" },
-          },
-          interactivity: {
-            detect_on: "canvas",
-            events: { onhover: { enable: false }, onclick: { enable: false }, resize: true },
-          },
-          retina_detect: false,
-        });
-      }
-    };
-    // particles.js may load slightly after mount
-    if (window.particlesJS) init();
-    else {
-      const t = setInterval(() => { if (window.particlesJS) { init(); clearInterval(t); } }, 100);
-      return () => clearInterval(t);
-    }
-  }, []);
+
 
   /* typewriter */
   useEffect(() => {
@@ -76,8 +49,26 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Particles */}
-      <div id="particles-js" className="absolute inset-0 z-0" />
+      {/* Liquid fluid background mechanics */}
+      <div className="absolute inset-0 z-0 opacity-60">
+        <LiquidEther
+          colors={["#3b82f6", "#8b5cf6", "#06b6d4"]}
+          mouseForce={20}
+          cursorSize={90}
+          isViscous={true}
+          viscous={30}
+          iterationsViscous={32}
+          iterationsPoisson={32}
+          resolution={0.5}
+          isBounce={false}
+          autoDemo={true}
+          autoSpeed={0.5}
+          autoIntensity={2.2}
+          takeoverDuration={0.25}
+          autoResumeDelay={2500}
+          autoRampDuration={0.6}
+        />
+      </div>
 
       {/* Ambient blobs */}
       <div className="absolute inset-0 z-[1] pointer-events-none">

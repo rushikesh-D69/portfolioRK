@@ -30,11 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-bg-1 text-text-1 font-inter antialiased">
-        {/* particles.js CDN */}
-        <Script
-          src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
-          strategy="beforeInteractive"
-        />
+
 
         <CustomCursor />
         <ScrollProgress />
