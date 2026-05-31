@@ -50,7 +50,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Liquid fluid background mechanics */}
-      <div className="absolute inset-0 z-0 opacity-60">
+      <div className="absolute inset-0 z-0">
         <LiquidEther
           colors={["#3b82f6", "#8b5cf6", "#06b6d4"]}
           mouseForce={20}

@@ -115,8 +115,8 @@ export default function LiquidEther({
     }
 
     const paletteTex = makePaletteTexture(colors);
-    // Hard-code transparent background vector (alpha 0)
-    const bgVec4 = new THREE.Vector4(0, 0, 0, 0);
+    // Hard-code deep slate blue background vector (alpha 1.0) to match portfolio theme
+    const bgVec4 = new THREE.Vector4(15 / 255, 23 / 255, 42 / 255, 1.0);
 
     class CommonClass {
       width = 0;
@@ -136,10 +136,10 @@ export default function LiquidEther({
         this.container = container;
         this.pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
         this.resize();
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        // Always transparent
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        // Solid deep slate blue background
         this.renderer.autoClear = false;
-        this.renderer.setClearColor(new THREE.Color(0x000000), 0);
+        this.renderer.setClearColor(new THREE.Color(0x0f172a), 1.0);
         this.renderer.setPixelRatio(this.pixelRatio);
         this.renderer.setSize(this.width, this.height);
         const el = this.renderer.domElement;
