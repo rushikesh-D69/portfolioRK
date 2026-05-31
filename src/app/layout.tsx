@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
+import EasterEgg from "@/components/EasterEgg";
 
 export const metadata: Metadata = {
   title: "Rushikesh D – Portfolio",
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <BackToTop />
+        <EasterEgg />
       </body>
     </html>
   );
