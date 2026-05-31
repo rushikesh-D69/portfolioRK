@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=VT323&display=swap');
+
+:root {
+  --primary:   #3b82f6;
+  --secondary: #8b5cf6;
+  --accent:    #06b6d4;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #0f172a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+body.custom-cursor-enabled { cursor: none !important; }
+
+/* ── Custom scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar       { width: 7px; }
+::-webkit-scrollbar-track { background: #1e293b; }
+::-webkit-scrollbar-thumb { background: linear-gradient(135deg,#3b82f6,#8b5cf6); border-radius: 4px; }
+::selection               { background: #3b82f6; color: #fff; }
+
+/* ── Gradient text utility ────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Gradient border utility ──────────────────────────────── */
+.gradient-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ── Custom cursor ────────────────────────────────────────── */
+.custom-cursor,
+.cursor-ring {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor {
+  width: 10px;
+  height: 10px;
+  background: #3b82f6;
+  transition: background 0.2s, width 0.2s, height 0.2s;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #3b82f6;
+  background: transparent;
+  transition: transform 0.15s cubic-bezier(.17,.67,.83,.67), width 0.2s, height 0.2s, border-color 0.2s;
+}
+
+.cursor-ring.magnetic { border-color: #8b5cf6; width: 52px; height: 52px; }
+.cursor-ring.scrolling { border-color: #06b6d4; width: 24px; height: 24px; opacity: 0.7; }
+.custom-cursor.scrolling { width: 18px; height: 18px; background: #06b6d4; }
+
+/* ── Particle canvas ──────────────────────────────────────── */
+#particles-js {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* ── Timeline line ────────────────────────────────────────── */
+.timeline-line {
+  position: absolute;
+  left: 30px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+}
+
+/* ── No-projects easter egg ───────────────────────────────── */
+.vt323 { font-family: 'VT323', monospace; }
+
+/* ── Animations ───────────────────────────────────────────── */
+@keyframes ripple {
+  to { transform: scale(2); opacity: 0; }
+}
