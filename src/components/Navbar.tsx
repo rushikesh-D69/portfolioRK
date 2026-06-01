@@ -99,16 +99,30 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden absolute top-[70px] left-0 w-full bg-bg-1/98 backdrop-blur-md border-b border-border-c py-6 flex flex-col items-center gap-6">
-          {navLinks.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              onClick={(e) => { e.preventDefault(); scrollTo(href); }}
-              className="text-text-2 hover:text-white font-medium text-lg transition-colors no-underline"
-            >
-              {label}
-            </a>
-          ))}
+          {navLinks.map(({ label, href }) =>
+            isProjects ? (
+              <Link
+                key={label}
+                href={`/${href}`}
+                onClick={() => setMenuOpen(false)}
+                className="text-text-2 hover:text-white font-medium text-lg transition-colors no-underline"
+              >
+                {label}
+              </Link>
+            ) : (
+              <a
+                key={label}
+                href={href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(href);
+                }}
+                className="text-text-2 hover:text-white font-medium text-lg transition-colors no-underline"
+              >
+                {label}
+              </a>
+            )
+          )}
         </div>
       )}
     </nav>

@@ -47,10 +47,13 @@ body.custom-cursor-enabled { cursor: none !important; }
 .custom-cursor,
 .cursor-ring {
   position: fixed;
+  left: 0;
+  top: 0;
   pointer-events: none;
   z-index: 9999;
   border-radius: 9999px;
-  transform: translate(-50%, -50%);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .custom-cursor {
@@ -65,7 +68,7 @@ body.custom-cursor-enabled { cursor: none !important; }
   height: 36px;
   border: 2px solid #3b82f6;
   background: transparent;
-  transition: transform 0.15s cubic-bezier(.17,.67,.83,.67), width 0.2s, height 0.2s, border-color 0.2s;
+  transition: width 0.2s, height 0.2s, border-color 0.2s;
 }
 
 .cursor-ring.magnetic { border-color: #8b5cf6; width: 52px; height: 52px; }

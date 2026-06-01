@@ -84,6 +84,7 @@ export default function LiquidEther({
   const intersectionObserverRef = useRef<IntersectionObserver | null>(null);
   const isVisibleRef = useRef<boolean>(true);
   const resizeRafRef = useRef<number | null>(null);
+  const paletteTexRef = useRef<THREE.DataTexture | null>(null);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -115,6 +116,7 @@ export default function LiquidEther({
     }
 
     const paletteTex = makePaletteTexture(colors);
+    paletteTexRef.current = paletteTex;
     // Hard-code deep slate blue background vector (alpha 1.0) to match portfolio theme
     const bgVec4 = new THREE.Vector4(15 / 255, 23 / 255, 42 / 255, 1.0);
 
@@ -1173,29 +1175,37 @@ export default function LiquidEther({
       }
       webglRef.current = null;
     };
-  }, [
-    BFECC,
-    cursorSize,
-    dt,
-    isBounce,
-    isViscous,
-    iterationsPoisson,
-    iterationsViscous,
-    mouseForce,
-    resolution,
-    viscous,
-    colors,
-    autoDemo,
-    autoSpeed,
-    autoIntensity,
-    takeoverDuration,
-    autoResumeDelay,
-    autoRampDuration
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const prevColorsRef = useRef(colors);
 
   useEffect(() => {
     const webgl = webglRef.current;
     if (!webgl) return;
+
+    // Update colors in-place if they change
+    const colorsChanged = colors.join(",") !== prevColorsRef.current.join(",");
+    if (colorsChanged) {
+      prevColorsRef.current = colors;
+      const tex = paletteTexRef.current;
+      if (tex) {
+        const arr = colors.length === 1 ? [colors[0], colors[0]] : colors;
+        const w = arr.length;
+        const data = new Uint8Array(w * 4);
+        for (let i = 0; i < w; i++) {
+          const c = new THREE.Color(arr[i]);
+          data[i * 4 + 0] = Math.round(c.r * 255);
+          data[i * 4 + 1] = Math.round(c.g * 255);
+          data[i * 4 + 2] = Math.round(c.b * 255);
+          data[i * 4 + 3] = 255;
+        }
+        tex.image.data = data;
+        tex.image.width = w;
+        tex.needsUpdate = true;
+      }
+    }
+
     const sim = webgl.output?.simulation;
     if (!sim) return;
     const prevRes = sim.options.resolution;
@@ -1238,7 +1248,8 @@ export default function LiquidEther({
     autoIntensity,
     takeoverDuration,
     autoResumeDelay,
-    autoRampDuration
+    autoRampDuration,
+    colors
   ]);
 
   return (
