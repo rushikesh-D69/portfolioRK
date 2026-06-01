@@ -6,6 +6,7 @@ import { X, Github, ExternalLink, Calendar, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/data/projects";
+import { getAssetPath } from "@/lib/utils";
 
 interface ProjectModalProps {
   project: Project;
@@ -43,7 +44,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         {/* Header Image/Banner */}
         <div className="relative w-full h-48 sm:h-64 md:h-80 overflow-hidden">
           <Image
-            src={image}
+            src={getAssetPath(image)}
             alt={title}
             fill
             priority

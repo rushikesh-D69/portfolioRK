@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { Terminal, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getAssetPath } from "@/lib/utils";
 
 const KONAMI_CODE = [
   "ArrowUp",
@@ -224,7 +225,7 @@ export default function EasterEgg() {
       {/* Cyber Anime Mascot character */}
       <div className="absolute right-4 sm:right-10 md:right-24 bottom-36 sm:bottom-48 w-48 sm:w-64 md:w-80 h-48 sm:h-64 md:h-80 pointer-events-none animate-bounce" style={{ animationDuration: "3.5s" }}>
         <Image
-          src="/cyber_mascot.png"
+          src={getAssetPath("/cyber_mascot.png")}
           alt="Cyber Mascot"
           width={320}
           height={320}

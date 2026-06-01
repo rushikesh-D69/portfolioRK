@@ -6,6 +6,7 @@ import { Github, ExternalLink, ZoomIn } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { Project } from "@/data/projects";
 import ProjectModal from "./ProjectModal";
+import { getAssetPath } from "@/lib/utils";
 
 interface ProjectCardProps {
   project: Project;
@@ -24,7 +25,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* Image */}
         <div className="relative w-full pb-[60%] overflow-hidden">
           <Image
-            src={image}
+            src={getAssetPath(image)}
             alt={title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-[1.07]"

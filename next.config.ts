@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   output: "export",
   basePath: isProd ? "/portfolioRK" : "",
   trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProd ? "/portfolioRK" : "",
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
