@@ -34,7 +34,7 @@ export default function Research() {
                   {image && (
                     <div className="relative w-full h-40 sm:h-44 bg-[#0a0a0a] border-b border-[rgba(255,255,255,0.06)]">
                       <Image
-                        src={image}
+                        src={assetPath(image)}
                         alt={title}
                         fill
                         className="object-contain p-3"
@@ -51,7 +51,7 @@ export default function Research() {
                             {logos.map((logo) => (
                               <Image
                                 key={logo.alt}
-                                src={logo.src}
+                                src={assetPath(logo.src)}
                                 alt={logo.alt}
                                 fill
                                 className="object-contain p-1.5"
@@ -75,7 +75,7 @@ export default function Research() {
                                 }`}
                               >
                                 <Image
-                                  src={logo.src}
+                                  src={assetPath(logo.src)}
                                   alt={logo.alt}
                                   fill
                                   className={`${

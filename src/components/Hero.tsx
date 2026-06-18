@@ -88,8 +88,8 @@ export default function Hero() {
             <FadeUp delay={0.24}>
               <div className="flex gap-5">
                 {[
-                  { href: "https://github.com/rushikesh-d", Icon: Github, label: "GitHub" },
-                  { href: "https://linkedin.com/in/rushikesh-d", Icon: Linkedin, label: "LinkedIn" },
+                  { href: "https://github.com/rushikesh-D69", Icon: Github, label: "GitHub" },
+                  { href: "https://www.linkedin.com/in/d-rushikesh/", Icon: Linkedin, label: "LinkedIn" },
                   { href: "mailto:drushikesh0105@gmail.com", Icon: Mail, label: "Email" },
                 ].map(({ href, Icon, label }) => (
                   <a

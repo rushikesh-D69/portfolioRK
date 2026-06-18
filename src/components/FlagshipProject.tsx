@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/data/projects";
 import FadeUp from "./motion/FadeUp";
+import { assetPath } from "@/lib/site";
 
 interface FlagshipProjectProps {
   project: Project;
@@ -32,7 +33,7 @@ export default function FlagshipProject({ project }: FlagshipProjectProps) {
         <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-0">
           <div className="relative min-h-[280px] sm:min-h-[340px] lg:min-h-[480px] bg-bg-3 overflow-hidden">
             <Image
-              src={project.image}
+              src={assetPath(project.image)}
               alt={project.title}
               fill
               className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
