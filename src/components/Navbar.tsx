@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "@/data/nav";
 import { Menu, X } from "lucide-react";
+import { useMounted } from "@/hooks/useMounted";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen]     = useState(false);
@@ -12,9 +14,10 @@ export default function Navbar() {
   const [activeSection, setActive]  = useState("home");
   const pathname = usePathname();
   const isProjects = pathname === "/projects";
+  const mounted = useMounted();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => setScrolled(window.scrollY > 48);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -32,99 +35,115 @@ export default function Navbar() {
 
   const scrollTo = (href: string) => {
     setMenuOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  if (!mounted) {
+    return <header className="fixed top-5 left-0 right-0 z-50 h-14 pointer-events-none" />;
+  }
+
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-border-c transition-all duration-300 ${
-        scrolled ? "bg-bg-1/98 shadow-lg" : "bg-bg-1/95"
-      } backdrop-blur-md`}
+  <header className="fixed top-4 md:top-5 left-0 right-0 z-50 px-4 md:px-6 pointer-events-none">
+    <motion.nav
+      initial={{ y: -16, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+      className={`pointer-events-auto max-w-4xl mx-auto flex items-center justify-between transition-all duration-500 rounded-full border ${
+        scrolled
+          ? "h-12 px-4 md:px-5 bg-[rgba(8,8,8,0.82)] backdrop-blur-[12px] border-[rgba(255,255,255,0.1)] shadow-[0_8px_40px_rgba(0,0,0,0.45),0_0_0_1px_rgba(59,130,246,0.06)]"
+          : "h-14 px-5 md:px-6 bg-[rgba(8,8,8,0.55)] backdrop-blur-[10px] border-[rgba(255,255,255,0.08)] shadow-[0_4px_24px_rgba(0,0,0,0.35)]"
+      }`}
     >
-      <div className="max-w-6xl mx-auto px-8 flex items-center justify-between h-[70px]">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl font-bold gradient-text no-underline"
-        >
-          Rushikesh D
-        </Link>
+      <Link
+        href="/"
+        className="text-sm font-bold tracking-tight text-white no-underline hover:text-primary transition-colors"
+      >
+        Rushikesh
+      </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden md:flex list-none gap-8">
-          {navLinks.map(({ label, href }) => {
-            const sectionId = href.replace("#", "");
-            const isActive = !isProjects && activeSection === sectionId;
-            return (
-              <li key={label}>
-                {isProjects ? (
-                  <Link
-                    href={`/${href}`}
-                    className={`nav-link-item ${label === "Projects" ? "text-white" : "text-text-2"}`}
-                  >
-                    {label}
-                  </Link>
-                ) : (
-                  <a
-                    href={href}
-                    onClick={(e) => { e.preventDefault(); scrollTo(href); }}
-                    className={`relative text-sm font-medium transition-colors duration-300 no-underline pb-1 group ${
-                      isActive ? "text-white" : "text-text-2 hover:text-white"
-                    }`}
-                  >
-                    {label}
-                    <span
-                      className={`absolute bottom-0 left-0 h-0.5 bg-grad-main transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
+      <ul className="hidden md:flex list-none gap-8">
+        {navLinks.map(({ label, href }) => {
+          const sectionId = href.replace("#", "");
+          const isActive = !isProjects && activeSection === sectionId;
+          return (
+            <li key={label}>
+              {isProjects ? (
+                <Link
+                  href={`/${href}`}
+                  className={`text-xs font-semibold uppercase tracking-widest transition-colors no-underline ${
+                    label === "Projects" ? "text-primary" : "text-text-2 hover:text-white"
+                  }`}
+                >
+                  {label}
+                </Link>
+              ) : (
+                <a
+                  href={href}
+                  onClick={(e) => { e.preventDefault(); scrollTo(href); }}
+                  className={`relative text-xs font-semibold uppercase tracking-widest transition-colors no-underline ${
+                    isActive ? "text-white" : "text-text-2 hover:text-white"
+                  }`}
+                >
+                  {label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute -bottom-2 left-0 right-0 h-px bg-primary"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
-                  </a>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+                  )}
+                </a>
+              )}
+            </li>
+          );
+        })}
+      </ul>
 
-        {/* Hamburger */}
         <button
-          className="md:hidden p-1 text-white"
+          className="md:hidden p-2 text-text-2 hover:text-white transition-colors"
+          suppressHydrationWarning
           onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+        aria-label="Toggle menu"
+      >
+        {menuOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
+    </motion.nav>
 
-      {/* Mobile menu */}
+    <AnimatePresence>
       {menuOpen && (
-        <div className="md:hidden absolute top-[70px] left-0 w-full bg-bg-1/98 backdrop-blur-md border-b border-border-c py-6 flex flex-col items-center gap-6">
-          {navLinks.map(({ label, href }) =>
-            isProjects ? (
-              <Link
-                key={label}
-                href={`/${href}`}
-                onClick={() => setMenuOpen(false)}
-                className="text-text-2 hover:text-white font-medium text-lg transition-colors no-underline"
-              >
-                {label}
-              </Link>
-            ) : (
-              <a
-                key={label}
-                href={href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollTo(href);
-                }}
-                className="text-text-2 hover:text-white font-medium text-lg transition-colors no-underline"
-              >
-                {label}
-              </a>
-            )
-          )}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: -8, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -8, scale: 0.98 }}
+          transition={{ duration: 0.25 }}
+          className="pointer-events-auto md:hidden mt-3 max-w-sm mx-auto rounded-2xl border border-[rgba(255,255,255,0.1)] bg-[rgba(8,8,8,0.92)] backdrop-blur-[12px] py-6 px-4 shadow-2xl"
+        >
+          <div className="flex flex-col items-center gap-5">
+            {navLinks.map(({ label, href }) =>
+              isProjects ? (
+                <Link
+                  key={label}
+                  href={`/${href}`}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-text-2 hover:text-white text-sm font-medium no-underline"
+                >
+                  {label}
+                </Link>
+              ) : (
+                <a
+                  key={label}
+                  href={href}
+                  onClick={(e) => { e.preventDefault(); scrollTo(href); }}
+                  className="text-text-2 hover:text-white text-sm font-medium no-underline"
+                >
+                  {label}
+                </a>
+              )
+            )}
+          </div>
+        </motion.div>
       )}
-    </nav>
+    </AnimatePresence>
+  </header>
   );
 }

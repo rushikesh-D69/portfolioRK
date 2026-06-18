@@ -4,25 +4,25 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-60",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-medium transition-all duration-350 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         primary:
-          "bg-grad-main text-white shadow-lg hover:-translate-y-0.5 hover:shadow-xl",
+          "btn-primary-glow text-white px-7 py-3 text-sm",
         secondary:
-          "bg-transparent text-white border-2 border-border-c hover:border-primary hover:text-primary hover:-translate-y-0.5",
+          "btn-glass text-text-2 hover:text-white px-7 py-3 text-sm",
         ghost:
-          "bg-transparent border-2 border-border-c text-text-2 hover:border-primary hover:text-primary",
+          "bg-transparent text-text-2 hover:text-white px-5 py-2 text-sm",
         filter:
-          "bg-bg-2 border-2 border-border-c text-text-2 text-sm hover:border-primary hover:text-primary",
+          "btn-glass text-text-2 text-sm px-4 py-2 hover:text-white",
         "filter-active":
-          "bg-primary border-2 border-primary text-white text-sm",
+          "bg-primary/15 border border-primary/30 text-primary text-sm px-4 py-2",
       },
       size: {
-        default: "px-8 py-3.5 text-base",
+        default: "px-7 py-3 text-sm",
         sm:      "px-5 py-2 text-sm",
-        icon:    "w-11 h-11",
+        icon:    "w-10 h-10",
       },
     },
     defaultVariants: { variant: "primary", size: "default" },

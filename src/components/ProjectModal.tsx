@@ -38,7 +38,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       {/* Modal Container */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl max-h-[90vh] bg-bg-3 border border-border-c/80 rounded-2xl overflow-y-auto shadow-2xl flex flex-col transition-all duration-300 scale-95 opacity-0 animate-scale-up"
+        className="relative w-full max-w-4xl max-h-[90vh] glass-card border border-[rgba(255,255,255,0.08)] rounded-2xl overflow-y-auto shadow-2xl flex flex-col transition-all duration-300 scale-95 opacity-0 animate-scale-up"
       >
         {/* Header Image/Banner */}
         <div className="relative w-full h-48 sm:h-64 md:h-80 overflow-hidden">
@@ -51,12 +51,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             sizes="(max-width: 1200px) 100vw, 1000px"
           />
           {/* Cover gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-3 via-bg-3/30 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-black/50" />
 
           {/* Close Button */}
           <button
             onClick={onClose}
             aria-label="Close modal"
+            suppressHydrationWarning
             className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary hover:scale-110 transition-all duration-200"
           >
             <X size={20} />
@@ -64,7 +65,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         </div>
 
         {/* Modal Contents */}
-        <div className="p-6 sm:p-8 flex flex-col gap-6 -mt-8 relative z-10 bg-bg-3 rounded-t-3xl">
+        <div className="p-6 sm:p-8 flex flex-col gap-6 -mt-8 relative z-10 rounded-t-3xl">
           {/* Meta Info */}
           <div className="flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary">

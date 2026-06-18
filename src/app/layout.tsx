@@ -1,44 +1,49 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import PageAtmosphere from "@/components/PageAtmosphere";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
-import EasterEgg from "@/components/EasterEgg";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Rushikesh D – Portfolio",
   description:
     "Portfolio of Rushikesh D — ECE student, Embedded Systems Developer, Analog Circuit Designer & Machine Learning Enthusiast.",
   openGraph: {
-    title:       "Rushikesh D – Portfolio",
-    description: "ECE student building smart, real-time solutions at the intersection of hardware and software.",
-    type:        "website",
+    title: "Rushikesh D – Portfolio",
+    description:
+      "ECE student building smart, real-time solutions at the intersection of hardware and software.",
+    type: "website",
   },
   icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
       <head>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
       </head>
-      <body className="bg-bg-1 text-text-1 font-inter antialiased">
-
-
-        <CustomCursor />
-        <ScrollProgress />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <BackToTop />
-        <EasterEgg />
+      <body className="bg-bg-base text-text-1 font-inter antialiased relative">
+        <PageAtmosphere />
+        <div className="relative z-[1]">
+          <ScrollProgress />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <BackToTop />
+        </div>
       </body>
     </html>
   );

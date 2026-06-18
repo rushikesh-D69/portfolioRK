@@ -24,11 +24,9 @@ export const socialLinks: SocialLink[] = [
   { icon: "fas fa-envelope", href: "mailto:drushikesh0105@gmail.com",           label: "Email" },
 ];
 
-export const typewriterTexts: string[] = [
-  "Embedded Systems Developer",
-  "Analog Circuit Designer",
-  "Machine Learning Enthusiast",
-  "Microcontroller Programmer",
-  "Hardware-Software Integrator",
-  "Robotics & Automation Engineer",
+export const heroTypewriterTexts: string[] = [
+  "Embedded System Developer",
+  "IoT Engineer",
+  "ML Enthusiast",
+  "Embedded AI/Robotic",
 ];

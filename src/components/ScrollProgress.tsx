@@ -18,7 +18,7 @@ export default function ScrollProgress() {
   return (
     <div
       style={{ width: `${pct}%` }}
-      className="fixed top-0 left-0 h-[3px] bg-grad-main z-[9999] transition-[width] duration-100 pointer-events-none"
+      className="fixed top-0 left-0 h-px bg-gradient-to-r from-primary to-secondary z-[9999] transition-[width] duration-100 pointer-events-none"
     />
   );
 }

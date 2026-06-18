@@ -1,74 +1,43 @@
-import { GraduationCap, Cpu, Bot } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
-interface Highlight {
-  Icon: LucideIcon;
-  title: string;
-  lines: string[];
-}
-
-const highlights: Highlight[] = [
-  {
-    Icon: GraduationCap,
-    title: "Education",
-    lines: ["B.Tech Electronics & Communication", "Amrita Vishwa Vidyapeetham"],
-  },
-  {
-    Icon: Cpu,
-    title: "Specialization",
-    lines: ["Embedded Systems", "Analog Circuit Design"],
-  },
-  {
-    Icon: Bot,
-    title: "Passion",
-    lines: ["Robotics & Automation", "Creative Engineering", "Innovation & Problem Solving"],
-  },
-];
+import SectionHeader from "./motion/SectionHeader";
+import FadeUp from "./motion/FadeUp";
+import NarrativeFlow from "./NarrativeFlow";
 
 export default function About() {
   return (
-    <section id="about" className="py-24 pt-32 bg-bg-2 min-h-screen">
-      <div className="max-w-6xl mx-auto px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-[clamp(2.5rem,5vw,3.5rem)] font-bold gradient-text mb-4">
-            About Me
-          </h2>
-          <p className="text-text-3 max-w-xl mx-auto text-lg">
-            Get to know more about my background and passion for technology
-          </p>
-        </div>
+    <section id="about" className="section-padding border-t border-[rgba(255,255,255,0.06)]">
+      <div className="max-w-content mx-auto px-6 md:px-10">
+        <SectionHeader
+          label="Focus"
+          title={
+            <>
+              <span className="block">Building Intelligent Systems</span>
+              <span className="block text-text-2 font-extrabold">From Embedded Hardware</span>
+              <span className="gradient-text block">To Learning-Based Decision Systems</span>
+            </>
+          }
+          description="ECE student building firmware, analog circuits, and ML pipelines — integrated as complete systems, not isolated demos."
+          align="left"
+          className="md:mb-24"
+        />
 
-        <div className="max-w-3xl mx-auto">
-          <div className="space-y-5 mb-12">
-            <p className="text-text-2 text-lg leading-relaxed">
-              I&apos;m an Electronics and Communication Engineering student at Amrita
-              Vishwa Vidyapeetham, Bengaluru. My interests lie at the intersection of
-              embedded systems, machine learning, and analog hardware.
-            </p>
-            <p className="text-text-2 text-lg leading-relaxed">
-              I&apos;m also a weeb and otaku—so creativity, curiosity, and a love for
-              design and flow are always part of my projects.
-            </p>
+        <FadeUp>
+          <div className="glass-card rounded-2xl p-10 md:p-16 lg:p-20 mb-20 md:mb-28 max-w-5xl">
+            <p className="section-label mb-8">Technical Profile</p>
+            <h3 className="text-white font-extrabold text-[clamp(2rem,4.5vw,3.5rem)] tracking-[-0.04em] leading-[1.05] mb-10 max-w-3xl">
+              Hardware constraints, firmware logic, and learned models — engineered as one stack.
+            </h3>
+            <div className="space-y-7 body-lg text-text-2 font-light max-w-3xl">
+              <p>
+                I&apos;m an Electronics and Communication Engineering student at Amrita Vishwa Vidyapeetham, passionate about creating systems that seamlessly bridge hardware and software. My work focuses on embedded systems, analog electronics, and intelligent real-time applications.
+              </p>
+              <p>
+                Rather than showcasing every project, I curate a portfolio of work that demonstrates clear thinking, solid engineering, and measurable impact. Each project tells a story about problem-solving and technical excellence.
+              </p>
+            </div>
           </div>
+        </FadeUp>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {highlights.map(({ Icon, title, lines }) => (
-              <div
-                key={title}
-                className="bg-bg-3 border border-border-c rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-primary"
-              >
-                <div className="w-14 h-14 rounded-xl bg-grad-main flex items-center justify-center mb-4">
-                  <Icon size={24} className="text-white" />
-                </div>
-                <h4 className="text-white font-semibold text-lg mb-2">{title}</h4>
-                {lines.map((l) => (
-                  <p key={l} className="text-text-3 text-sm leading-relaxed">{l}</p>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+        <NarrativeFlow />
       </div>
     </section>
   );

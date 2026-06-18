@@ -206,4 +206,65 @@ export const filterCategories: FilterCategory[] = [
   { label: "App Development", value: "app-dev" },
 ];
 
+export const categoryTiers: {
+  value: string;
+  label: string;
+  level: string;
+  description: string;
+}[] = [
+  {
+    value: "ml",
+    label: "Machine Learning",
+    level: "01",
+    description: "Learning-based inference & signal models",
+  },
+  {
+    value: "embedded",
+    label: "Embedded Systems",
+    level: "02",
+    description: "Bare-metal firmware & microcontroller systems",
+  },
+  {
+    value: "iot",
+    label: "IoT",
+    level: "03",
+    description: "Connected sensing & wireless control",
+  },
+  {
+    value: "analog",
+    label: "Analog & Signal",
+    level: "04",
+    description: "Circuit design, simulation & signal chains",
+  },
+  {
+    value: "app-dev",
+    label: "Application Layer",
+    level: "05",
+    description: "Interfaces, tooling & deployed software",
+  },
+];
+
+export function getCategoryLabel(value: string): string {
+  return filterCategories.find((c) => c.value === value)?.label ?? value;
+}
+
+export function groupProjectsByCategory<T extends Project>(projectList: T[]) {
+  const groups: { tier: (typeof categoryTiers)[number]; projects: T[] }[] = [];
+
+  for (const tier of categoryTiers) {
+    const matched = projectList.filter((p) => p.category.includes(tier.value));
+    if (matched.length > 0) groups.push({ tier, projects: matched });
+  }
+
+  return groups;
+}
+
 export const featuredProjects = projects.filter((p) => p.featured);
+
+/** Primary showcase — highest research + systems signal */
+export const flagshipProject =
+  projects.find((p) => p.title === "Music Recommendation System") ?? featuredProjects[0];
+
+export const showcaseProjects = featuredProjects.filter(
+  (p) => p.title !== flagshipProject.title
+);

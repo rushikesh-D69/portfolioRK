@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Send, Loader2, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Send, Loader2, CheckCircle, FileText } from "lucide-react";
 import { socialLinks } from "@/data/nav";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import SectionHeader from "./motion/SectionHeader";
+import FadeUp from "./motion/FadeUp";
 
 type Status = "idle" | "sending" | "sent";
 
@@ -40,94 +42,112 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-bg-2 min-h-screen">
-      <div className="max-w-6xl mx-auto px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-[clamp(2.5rem,5vw,3.5rem)] font-bold gradient-text mb-4">
-            Get In Touch
-          </h2>
-          <p className="text-text-3 max-w-xl mx-auto text-lg">
-            I&apos;m always open to discussing new opportunities and interesting projects
-          </p>
-        </div>
+    <section id="contact" className="section-padding bg-bg-base border-t border-[rgba(255,255,255,0.06)]">
+      <div className="max-w-content mx-auto px-6 md:px-10">
+        <SectionHeader
+          label="Get In Touch"
+          title={
+            <>
+              <span className="block">Let&apos;s</span>
+              <span className="gradient-text block">Create Together</span>
+            </>
+          }
+          description="Whether you have a project in mind, want to collaborate, or just want to discuss ideas — I'd love to hear from you."
+        />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Info */}
-          <div>
-            <h3 className="text-2xl font-semibold text-white mb-4">Let&apos;s Connect</h3>
-            <p className="text-text-2 mb-8 leading-relaxed">
-              Whether you have a project in mind, want to collaborate, or just want to say
-              hello, I&apos;d love to hear from you.
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-5xl mx-auto">
+          {/* Left — Info & CTA links */}
+          <FadeUp>
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-white font-semibold text-2xl mb-4">Let&apos;s Connect</h3>
+                <p className="text-text-2 leading-relaxed font-light text-lg">
+                  I&apos;m always interested in hearing about new projects and opportunities, especially those that involve innovative hardware and software solutions.
+                </p>
+              </div>
 
-            <div className="space-y-5 mb-8">
-              {contactItems.map(({ Icon, label, value, href }) => (
-                <div key={label} className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-grad-main flex items-center justify-center flex-shrink-0">
-                    <Icon size={20} className="text-white" />
+              <div className="space-y-5">
+                {contactItems.map(({ Icon, label, value, href }) => (
+                  <div key={label} className="flex items-start gap-4 group">
+                    <div className="w-12 h-12 rounded-xl border border-[rgba(255,255,255,0.08)] flex items-center justify-center flex-shrink-0">
+                      <Icon size={18} className="text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="text-text-3 text-xs font-medium mb-1 uppercase tracking-widest">{label}</h4>
+                      {href ? (
+                        <a href={href} className="text-text-2 hover:text-white transition-colors font-light no-underline text-base">
+                          {value}
+                        </a>
+                      ) : (
+                        <span className="text-text-2 font-light text-base">{value}</span>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-white font-medium text-sm mb-0.5">{label}</h4>
-                    {href ? (
-                      <a href={href} className="text-text-2 text-sm hover:text-primary transition-colors no-underline">
-                        {value}
-                      </a>
-                    ) : (
-                      <span className="text-text-2 text-sm">{value}</span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div>
-              <h4 className="text-white font-medium mb-3">Find me on</h4>
-              <div className="flex gap-3">
-                {socialLinks.map(({ icon, href, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={label}
-                    className="w-11 h-11 rounded-full bg-bg-3 border border-border-c flex items-center justify-center text-text-2 transition-all duration-300 hover:bg-grad-main hover:text-white hover:border-transparent hover:-translate-y-1 no-underline"
-                  >
-                    <i className={icon} />
-                  </a>
                 ))}
               </div>
+
+              {/* Social + Resume CTA */}
+              <div className="pt-6 border-t border-[rgba(255,255,255,0.08)]">
+                <h4 className="text-white font-semibold mb-5">Follow Along</h4>
+                <div className="flex flex-wrap gap-3">
+                  {socialLinks.map(({ icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[rgba(255,255,255,0.08)] text-text-2 hover:text-white hover:border-[rgba(255,255,255,0.16)] text-sm no-underline transition-colors"
+                    >
+                      <i className={icon} />
+                      {label}
+                    </a>
+                  ))}
+                  <a
+                    href="mailto:drushikesh0105@gmail.com?subject=Resume%20Request"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[rgba(255,255,255,0.08)] text-text-2 hover:text-white hover:border-[rgba(255,255,255,0.16)] text-sm no-underline transition-colors"
+                  >
+                    <FileText size={14} />
+                    Resume
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
+          </FadeUp>
 
-          {/* Form */}
-          <div className="bg-bg-3 border border-border-c rounded-2xl p-8">
-            <form className="flex flex-col gap-5" onSubmit={onSubmit}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="name" className="text-text-2 text-sm font-medium">Name</label>
-                  <Input id="name" name="name" required value={form.name} onChange={onChange} placeholder="Rushikesh D" />
+          {/* Right — Form */}
+          <FadeUp delay={0.15}>
+            <div className="glass-card rounded-2xl p-8 md:p-10 border-glow">
+              <form className="flex flex-col gap-5" onSubmit={onSubmit} suppressHydrationWarning>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="name" className="text-text-3 text-xs font-medium uppercase tracking-widest">Name</label>
+                    <Input id="name" name="name" required value={form.name} onChange={onChange} placeholder="Your name" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="email" className="text-text-3 text-xs font-medium uppercase tracking-widest">Email</label>
+                    <Input id="email" name="email" type="email" required value={form.email} onChange={onChange} placeholder="you@example.com" />
+                  </div>
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="email" className="text-text-2 text-sm font-medium">Email</label>
-                  <Input id="email" name="email" type="email" required value={form.email} onChange={onChange} placeholder="you@example.com" />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="subject" className="text-text-2 text-sm font-medium">Subject</label>
-                <Input id="subject" name="subject" required value={form.subject} onChange={onChange} placeholder="Project Collaboration" />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="message" className="text-text-2 text-sm font-medium">Message</label>
-                <Textarea id="message" name="message" rows={6} required value={form.message} onChange={onChange} placeholder="Tell me about your project..." />
-              </div>
 
-              <Button type="submit" disabled={status === "sending"} className="mt-1">
-                {status === "idle"    && <><Send    size={16} /> Send Message</>}
-                {status === "sending" && <><Loader2 size={16} className="animate-spin" /> Sending...</>}
-                {status === "sent"    && <><CheckCircle size={16} /> Message Sent!</>}
-              </Button>
-            </form>
-          </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="subject" className="text-text-3 text-xs font-medium uppercase tracking-widest">Subject</label>
+                  <Input id="subject" name="subject" required value={form.subject} onChange={onChange} placeholder="Project inquiry" />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="message" className="text-text-3 text-xs font-medium uppercase tracking-widest">Message</label>
+                  <Textarea id="message" name="message" rows={5} required value={form.message} onChange={onChange} placeholder="Tell me about your project..." />
+                </div>
+
+                <Button type="submit" disabled={status === "sending"} className="mt-2">
+                  {status === "idle"    && <><Send    size={16} /> Send Message</>}
+                  {status === "sending" && <><Loader2 size={16} className="animate-spin" /> Sending...</>}
+                  {status === "sent"    && <><CheckCircle size={16} /> Message Sent!</>}
+                </Button>
+              </form>
+            </div>
+          </FadeUp>
         </div>
       </div>
     </section>

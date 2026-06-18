@@ -1,45 +1,68 @@
 export interface SkillCategory {
   icon: string;
   title: string;
+  description: string;
   skills: string[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
-    icon: "fas fa-tools",
-    title: "Core Technical Skills",
+    icon: "fas fa-microchip",
+    title: "Embedded Systems",
+    description: "Bare-metal firmware, microcontrollers, and real-time hardware–software integration.",
     skills: [
       "Embedded Systems (ARM7, LPC2138)",
+      "ARM Microcontrollers",
+      "Raspberry Pi",
+      "Arduino",
       "Analog & Digital Circuit Design",
-      "Machine Learning (Python ML stack)",
       "Internet of Things (IoT)",
       "Control Systems & Signal Processing",
     ],
   },
   {
-    icon: "fas fa-code",
-    title: "Programming & Scripting",
-    skills: ["Python", "C / C++", "Java", "Arduino", "MATLAB"],
-  },
-  {
-    icon: "fas fa-mobile-alt",
-    title: "Development Tools & Frameworks",
+    icon: "fas fa-brain",
+    title: "Machine Learning",
+    description: "Intelligent systems that learn from data and deploy into real applications.",
     skills: [
-      "Flutter (Dart)",
+      "Machine Learning (Python ML stack)",
+      "Python",
       "Streamlit",
-      "React",
-      "Node.js",
-      "Proteus Design Suite",
-      "NI Multisim",
-      "LTSpice",
+      "MATLAB",
     ],
   },
   {
-    icon: "fas fa-microchip",
-    title: "Platforms & Hardware",
+    icon: "fas fa-satellite",
+    title: "Satellite Communications",
+    description: "NTN-inspired network thinking — orbital links, ground nodes, and signal topology.",
     skills: [
-      "Raspberry Pi",
-      "ARM Microcontrollers",
+      "Signal Processing",
+      "Control Systems & Signal Processing",
+      "Internet of Things (IoT)",
+    ],
+  },
+  {
+    icon: "fas fa-flask",
+    title: "Simulation & Research",
+    description: "Modeling, circuit simulation, and rigorous validation before deployment.",
+    skills: [
+      "Proteus Design Suite",
+      "NI Multisim",
+      "LTSpice",
+      "MATLAB",
+    ],
+  },
+  {
+    icon: "fas fa-code",
+    title: "Programming",
+    description: "Languages and frameworks for systems, apps, and research tooling.",
+    skills: [
+      "Python",
+      "C / C++",
+      "Java",
+      "Flutter (Dart)",
+      "React",
+      "Node.js",
       "Linux / Bash",
       "Git & GitHub",
       "VS Code",
