@@ -5,7 +5,9 @@ import PageAtmosphere from "@/components/PageAtmosphere";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import ScrollRestore from "@/components/ScrollRestore";
 import BackToTop from "@/components/BackToTop";
+import { BASE_PATH, SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -14,6 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Rushikesh D – Portfolio",
   description:
     "Portfolio of Rushikesh D — ECE student, Embedded Systems Developer, Analog Circuit Designer & Machine Learning Enthusiast.",
@@ -22,8 +25,9 @@ export const metadata: Metadata = {
     description:
       "ECE student building smart, real-time solutions at the intersection of hardware and software.",
     type: "website",
+    url: SITE_URL,
   },
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: `${BASE_PATH}/favicon.svg` },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -36,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-bg-base text-text-1 font-inter antialiased relative">
+        <ScrollRestore />
         <PageAtmosphere />
         <div className="relative z-[1]">
           <ScrollProgress />

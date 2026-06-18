@@ -4,7 +4,7 @@ export interface CredibilitySignal {
 
 export const credibilitySignals: CredibilitySignal[] = [
   { label: "ECE @ Amrita" },
-  { label: "Samsung PRISM Research" },
-  { label: "Conference Presenter" },
-  { label: "Embedded AI & NTN Systems" },
+  { label: "Samsung PRISM · NTN" },
+  { label: "IEEE VLSI SATA 2026" },
+  { label: "Exoplanet RL Research" },
 ];

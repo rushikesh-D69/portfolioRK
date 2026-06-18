@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
@@ -8,23 +9,52 @@ import Typewriter from "./Typewriter";
 import CredibilityStrip from "./CredibilityStrip";
 import { heroTypewriterTexts } from "@/data/nav";
 
+const scenePlaceholder = (
+  <div className="w-full h-[min(280px,32dvh)] sm:h-[min(340px,36dvh)] lg:h-[min(420px,42dvh)] rounded-2xl surface-clean" />
+);
+
 const HeroScene = dynamic(() => import("./hero/HeroScene"), {
   ssr: false,
-  loading: () => (
-    <div className="w-full h-[min(280px,32dvh)] sm:h-[min(340px,36dvh)] lg:h-[min(420px,42dvh)] rounded-2xl surface-clean" />
-  ),
+  loading: () => scenePlaceholder,
 });
+
+function DeferredHeroScene() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const enable = () => {
+      if (!cancelled) setReady(true);
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(enable, { timeout: 1200 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(id);
+      };
+    }
+
+    const timer = setTimeout(enable, 400);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, []);
+
+  return ready ? <HeroScene /> : scenePlaceholder;
+}
 
 export default function Hero() {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="home" className="relative overflow-x-hidden">
+    <section id="home" className="relative overflow-x-clip">
       <div className="hero-section relative z-10 max-w-content mx-auto px-6 md:px-10 flex items-center pt-[5.25rem] pb-4 md:pb-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-14 items-center w-full">
           <FadeUp delay={0} className="order-2 lg:order-1">
-            <HeroScene />
+            <DeferredHeroScene />
           </FadeUp>
 
           <div className="order-1 lg:order-2 space-y-5 md:space-y-6">

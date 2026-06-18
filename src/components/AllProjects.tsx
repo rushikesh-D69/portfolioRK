@@ -65,19 +65,14 @@ export default function AllProjects() {
         {filtered.length > 0 ? (
           showGrouped ? (
             <div className="space-y-16 mb-16">
-              {grouped.map(({ tier, projects: tierProjects }) => (
-                <div key={tier.value}>
-                  <div className="flex items-baseline gap-4 mb-8 pb-4 border-b border-[rgba(255,255,255,0.06)]">
-                    <span className="text-text-3 text-xs font-mono tracking-widest">
-                      LVL {tier.level}
-                    </span>
-                    <div>
-                      <h3 className="text-white font-bold text-lg tracking-tight">{tier.label}</h3>
-                      <p className="text-text-3 text-sm mt-0.5">{tier.description}</p>
-                    </div>
+              {grouped.map(({ group, projects: groupProjects }) => (
+                <div key={group.value}>
+                  <div className="mb-8 pb-4 border-b border-[rgba(255,255,255,0.06)]">
+                    <h3 className="text-white font-bold text-lg tracking-tight">{group.label}</h3>
+                    <p className="text-text-3 text-sm mt-0.5">{group.description}</p>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {tierProjects.map((project) => (
+                    {groupProjects.map((project) => (
                       <ProjectCard key={project.title} project={project} />
                     ))}
                   </div>

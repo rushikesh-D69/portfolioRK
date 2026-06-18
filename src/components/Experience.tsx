@@ -2,43 +2,14 @@
 
 import SectionHeader from "./motion/SectionHeader";
 import StaggerChildren, { StaggerItem } from "./motion/StaggerChildren";
+import { timelineItems } from "@/data/experience";
 
-interface TimelineItem {
-  title:        string;
-  company:      string;
-  period:       string;
-  description:  string;
-  achievements: string[];
+function isEducation(title: string) {
+  return /b\.tech|bachelor|education/i.test(title);
 }
 
-const timelineItems: TimelineItem[] = [
-  {
-    title:       "Electronics & Communication Engineering Student",
-    company:     "Amrita Vishwa Vidyapeetham, Bengaluru",
-    period:      "2023 – Present",
-    description: "Pursuing B.Tech in ECE with a focus on embedded systems, analog/digital design, and intelligent systems.",
-    achievements: [
-      "Strong foundation in electronics, circuits, and embedded programming",
-      "Hands-on experience with microcontrollers, signal processing, and IoT",
-      "Active participation in technical fests, robotics, and project expos",
-    ],
-  },
-  {
-    title:       "Project Developer",
-    company:     "Personal Projects",
-    period:      "2023 – Present",
-    description: "Developing personal and academic projects spanning embedded systems, analog circuits, IoT, and machine learning.",
-    achievements: [
-      "Built embedded systems projects using ARM microcontrollers",
-      "Created analog and digital circuit prototypes",
-      "Implemented ML models and IoT solutions for real-world problems",
-    ],
-  },
-];
-
-function parseYear(period: string) {
-  return period.split("–")[0].trim();
-}
+/** Oldest → newest (left to right on the track) */
+const chronologicalItems = [...timelineItems].reverse();
 
 export default function Experience() {
   return (
@@ -52,48 +23,99 @@ export default function Experience() {
               <span className="gradient-text block">Experience</span>
             </>
           }
-          description="My journey through technical learning and hands-on project development"
+          description="From Signals to Synapses — internships, firmware work, and ECE at Amrita Vishwa Vidyapeetham, Bengaluru."
         />
 
-        <div className="relative max-w-4xl mx-auto">
-          <div className="timeline-line hidden md:block" />
+        <div className="relative mt-4 md:mt-8">
+          {/* Mobile: horizontal scroll · Desktop: 3-column grid */}
+          <div className="overflow-x-auto pb-6 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide snap-x snap-mandatory">
+            <div className="relative min-w-[920px] md:min-w-0">
+              {/* Track line */}
+              <div
+                className="timeline-track-h hidden md:block"
+                aria-hidden
+              />
 
-          <StaggerChildren className="space-y-20 md:space-y-28" stagger={0.12}>
-            {timelineItems.map(({ title, company, period, description, achievements }, index) => (
-              <StaggerItem key={title}>
-                <div className="relative flex flex-col md:flex-row gap-10 md:gap-0">
-                  <div className="absolute left-0 md:left-1/2 top-10 timeline-node -translate-x-1/2 z-10 hidden md:block" />
+              <StaggerChildren
+                className="grid grid-cols-3 gap-6 md:gap-8 relative"
+                stagger={0.1}
+              >
+                {chronologicalItems.map((item, index) => {
+                  const edu = isEducation(item.title);
+                  return (
+                    <StaggerItem key={`${item.company}-${item.period}`}>
+                      <div className="snap-start flex flex-col items-stretch h-full">
+                        {/* Track node + year (desktop) */}
+                        <div className="hidden md:flex flex-col items-center mb-8">
+                          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-text-3 mb-3">
+                            {item.period}
+                          </span>
+                          <div className="timeline-node-h relative z-10" />
+                        </div>
 
-                  <div className={`md:w-1/2 flex items-start ${index % 2 === 0 ? "md:pr-20 md:text-right md:justify-end" : "md:pl-20 md:order-2"}`}>
-                    <div className="pl-10 md:pl-0">
-                      <p className="timeline-year">{parseYear(period)}</p>
-                      <p className="text-primary text-xs font-semibold uppercase tracking-[0.2em] mt-2">
-                        {period}
-                      </p>
-                    </div>
-                  </div>
+                        {/* Mobile period badge */}
+                        <div className="md:hidden flex items-center gap-3 mb-4">
+                          <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                          <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                            {item.period}
+                          </span>
+                        </div>
 
-                  <div className={`md:w-1/2 pl-10 md:pl-0 ${index % 2 === 0 ? "md:pl-20" : "md:pr-20 md:order-1"}`}>
-                    <div className="surface-elevated rounded-2xl p-8 md:p-10 text-left">
-                      <span className="section-label text-[0.65rem]">{company}</span>
-                      <h3 className="text-white text-2xl md:text-[1.75rem] font-extrabold mt-4 mb-4 tracking-[-0.03em] leading-tight">
-                        {title}
-                      </h3>
-                      <p className="text-text-2 mb-8 leading-[1.75] text-base font-light">{description}</p>
+                        <article className="surface-elevated rounded-2xl p-6 md:p-7 flex flex-col h-full border border-[rgba(255,255,255,0.06)] hover:border-[rgba(59,130,246,0.2)] transition-colors duration-300">
+                          <span
+                            className={`inline-flex self-start text-[0.6rem] font-bold uppercase tracking-[0.18em] px-2.5 py-1 rounded-full mb-4 ${
+                              edu
+                                ? "bg-secondary/15 text-secondary border border-secondary/25"
+                                : "bg-primary/10 text-primary border border-primary/20"
+                            }`}
+                          >
+                            {edu ? "Education" : "Experience"}
+                          </span>
 
-                      <div className="space-y-4 pt-6 border-t border-[rgba(255,255,255,0.06)]">
-                        {achievements.map((a) => (
-                          <p key={a} className="text-text-2 text-sm md:text-base leading-relaxed pl-4 border-l border-[rgba(59,130,246,0.25)]">
-                            {a}
+                          <p className="section-label text-[0.6rem] mb-2 leading-snug">
+                            {item.company}
                           </p>
-                        ))}
+                          <h3 className="text-white font-bold text-lg md:text-xl tracking-tight leading-snug mb-3">
+                            {item.title}
+                          </h3>
+
+                          {item.location && (
+                            <p className="text-text-3 text-xs mb-4">{item.location}</p>
+                          )}
+
+                          <p className="text-text-2 text-sm leading-relaxed font-light mb-5 flex-grow">
+                            {item.description}
+                          </p>
+
+                          <ul className="space-y-3 pt-4 border-t border-[rgba(255,255,255,0.06)]">
+                            {item.achievements.map((a) => (
+                              <li
+                                key={a}
+                                className="text-text-2 text-xs md:text-sm leading-relaxed pl-3 border-l-2 border-primary/30"
+                              >
+                                {a}
+                              </li>
+                            ))}
+                          </ul>
+                        </article>
+
+                        {/* Connector stub on mobile between cards */}
+                        {index < chronologicalItems.length - 1 && (
+                          <div className="md:hidden flex justify-center py-3" aria-hidden>
+                            <div className="w-px h-6 bg-gradient-to-b from-primary/40 to-transparent" />
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
+                    </StaggerItem>
+                  );
+                })}
+              </StaggerChildren>
+            </div>
+          </div>
+
+          <p className="text-text-3 text-xs text-center mt-2 md:hidden uppercase tracking-widest">
+            Swipe to explore →
+          </p>
         </div>
       </div>
     </section>

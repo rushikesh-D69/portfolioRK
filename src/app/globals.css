@@ -24,7 +24,8 @@ body {
   font-family: var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg-base);
   color: var(--text-primary);
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: auto;
   letter-spacing: -0.02em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,6 +43,14 @@ body {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.4); }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
 /* ── Typography utilities ─────────────────────────────────── */
 .gradient-text {
@@ -291,6 +300,59 @@ body {
   transform: translateX(-50%);
 }
 
+.timeline-track-h {
+  position: absolute;
+  top: 2.75rem;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.15),
+    rgba(59, 130, 246, 0.55) 25%,
+    rgba(139, 92, 246, 0.55) 75%,
+    rgba(139, 92, 246, 0.15)
+  );
+  border-radius: 2px;
+}
+
+.timeline-track-h::before,
+.timeline-track-h::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3b82f6;
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+}
+
+.timeline-track-h::before {
+  left: 0;
+}
+
+.timeline-track-h::after {
+  right: 0;
+  background: #8b5cf6;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+}
+
+.timeline-node-h {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  box-shadow:
+    0 0 0 4px #050505,
+    0 0 20px rgba(59, 130, 246, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .timeline-node {
   width: 14px;
   height: 14px;
@@ -324,8 +386,6 @@ body {
   color: #3B82F6;
   background: rgba(59, 130, 246, 0.08);
 }
-
-/* ── Particles — removed; use NetworkVisualization instead ── */
 
 /* ── Easter egg ───────────────────────────────────────────── */
 .vt323 { font-family: 'VT323', monospace; }

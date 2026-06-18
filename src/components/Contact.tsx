@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Mail, MapPin, Send, Loader2, CheckCircle, FileText } from "lucide-react";
 import { socialLinks } from "@/data/nav";
+import { resumeUrl } from "@/data/experience";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -104,7 +105,9 @@ export default function Contact() {
                     </a>
                   ))}
                   <a
-                    href="mailto:drushikesh0105@gmail.com?subject=Resume%20Request"
+                    href={resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[rgba(255,255,255,0.08)] text-text-2 hover:text-white hover:border-[rgba(255,255,255,0.16)] text-sm no-underline transition-colors"
                   >
                     <FileText size={14} />

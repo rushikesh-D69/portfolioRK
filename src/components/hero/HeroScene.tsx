@@ -191,6 +191,7 @@ function SceneContent({
 
 export default function HeroScene() {
   const mouseRef = useRef<MouseRef>({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
   const [lite, setLite] = useState(false);
 
   useEffect(() => {
@@ -201,18 +202,25 @@ export default function HeroScene() {
     return () => mq.removeEventListener("change", update);
   }, []);
 
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseRef.current = {
-      x: ((e.clientX - rect.left) / rect.width) * 2 - 1,
-      y: -((e.clientY - rect.top) / rect.height) * 2 + 1,
+  useEffect(() => {
+    const onPointerMove = (e: PointerEvent) => {
+      const el = containerRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      mouseRef.current = {
+        x: ((e.clientX - rect.left) / rect.width) * 2 - 1,
+        y: -((e.clientY - rect.top) / rect.height) * 2 + 1,
+      };
     };
-  };
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onPointerMove);
+  }, []);
 
   return (
     <div
+      ref={containerRef}
       className="relative w-full h-[min(280px,32dvh)] sm:h-[min(340px,36dvh)] lg:h-[min(420px,42dvh)] rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.04)_0%,rgba(5,5,5,0.6)_55%,#050505_100%)] overflow-hidden"
-      onPointerMove={onPointerMove}
     >
       <div className="absolute inset-0 pointer-events-none z-20">
         {SCENE_LABELS.map(({ label, sub, position }) => (
@@ -232,7 +240,7 @@ export default function HeroScene() {
         camera={{ position: [0, 0, 5.5], fov: 42 }}
         dpr={lite ? [1, 1] : [1, 1.5]}
         gl={{ alpha: true, antialias: !lite, powerPreference: "high-performance" }}
-        style={{ background: "transparent" }}
+        style={{ background: "transparent", pointerEvents: "none", touchAction: "pan-y" }}
       >
         <SceneContent mouseRef={mouseRef} lite={lite} />
       </Canvas>

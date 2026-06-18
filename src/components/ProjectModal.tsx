@@ -22,11 +22,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     };
     window.addEventListener("keydown", handleKeyDown);
     // Lock body scroll when modal is active
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = prevOverflow;
     };
   }, [onClose]);
 
