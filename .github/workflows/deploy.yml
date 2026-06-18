@@ -2,7 +2,7 @@ name: Deploy Next.js site to Pages
 
 on:
   push:
-    branches: ["main", "style-1"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -47,6 +47,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          NEXT_PUBLIC_BASE_PATH: /portfolioRK
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -54,6 +55,7 @@ jobs:
           path: ./out
 
   deploy:
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

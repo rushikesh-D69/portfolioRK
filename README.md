@@ -20,10 +20,11 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Production build
 
 ```bash
-npm run build
+# CI sets NEXT_PUBLIC_BASE_PATH=/portfolioRK automatically.
+# Local GitHub Pages preview:
+NEXT_PUBLIC_BASE_PATH=/portfolioRK npm run build   # macOS/Linux
+$env:NEXT_PUBLIC_BASE_PATH="/portfolioRK"; npm run build   # PowerShell
 ```
-
-Static output is written to `out/` with `basePath: /portfolioRK` for GitHub Pages.
 
 Preview locally:
 
