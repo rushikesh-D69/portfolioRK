@@ -327,7 +327,7 @@ export const projects: Project[] = [
     title: "Ultra Low-Voltage CMOS 5:2 Compressor",
     description:
       "Ultra low-voltage, low-power CMOS 5:2 compressor designed and simulated in Cadence Virtuoso (gpdk045, 45 nm) — based on IEEE Figure 13, optimized for power, delay, and area in VLSI arithmetic circuits.",
-    image: "/project-images/vlsi-compressor.svg",
+    image: "/project-images/vlsi-compressor-comp.jpg",
     date: "Nov 2025",
     category: ["vlsi"],
     tags: ["Cadence Virtuoso", "CMOS", "VLSI", "gpdk045", "5:2 Compressor"],
@@ -341,7 +341,16 @@ export const projects: Project[] = [
       "Low-voltage optimization — Simulated at 0.8–1.2 V VDD targeting minimal Power–Delay Product with full-swing output verification.",
       "VLSI-ready flow — Schematic, layout, DRC/LVS, and ADE transient analysis on 45 nm gpdk045 for high-speed DSP arithmetic blocks.",
     ],
-    screenshots: ["/project-images/vlsi-compressor.svg"],
+    screenshots: [
+      "/project-images/vlsi-compressor-comp.jpg",
+      "/project-images/vlsi-compressor-fivee.jpg",
+      "/project-images/vlsi-compressor-sevenb.jpg",
+      "/project-images/vlsi-compressor-eightb.jpg",
+      "/project-images/vlsi-compressor-layout.jpg",
+      "/project-images/vlsi-compressor-layout-sized.jpg",
+      "/project-images/vlsi-compressor-waveform.jpg",
+      "/project-images/vlsi-compressor-ade.png",
+    ],
   },
   {
     title: "Discrete Logic Digital Clock",
