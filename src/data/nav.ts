@@ -1,3 +1,5 @@
+import { contactMailto } from "@/data/contact";
+
 export interface NavLink {
   label: string;
   href: string;
@@ -22,7 +24,7 @@ export const navLinks: NavLink[] = [
 export const socialLinks: SocialLink[] = [
   { icon: "fab fa-github",   href: "https://github.com/rushikesh-D69",         label: "GitHub" },
   { icon: "fab fa-linkedin", href: "https://www.linkedin.com/in/d-rushikesh/", label: "LinkedIn" },
-  { icon: "fas fa-envelope", href: "mailto:drushikesh0105@gmail.com",           label: "Email" },
+  { icon: "fas fa-envelope", href: contactMailto, label: "Email" },
 ];
 
 export const heroTypewriterTexts: string[] = [

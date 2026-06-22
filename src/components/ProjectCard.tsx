@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Github, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { getCategoryLabel, type Project } from "@/data/projects";
+import { getCategoryLabel, getResearchKindLabel, type Project } from "@/data/projects";
 import ProjectModal from "./ProjectModal";
 import { assetPath } from "@/lib/site";
 
@@ -20,7 +20,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <>
       <div
         onClick={() => setIsModalOpen(true)}
-        className="group glass-card rounded-2xl overflow-hidden flex flex-col cursor-pointer h-full card-lift"
+        className={`group glass-card rounded-2xl overflow-hidden flex flex-col cursor-pointer h-full card-lift ${
+          project.isResearch ? "border border-secondary/25" : ""
+        }`}
       >
         {/* Image */}
         <div className="relative w-full pb-[58%] overflow-hidden bg-bg-3">
@@ -34,9 +36,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
 
           {/* Category badge */}
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-4 left-4 flex flex-col gap-2">
+            {project.isResearch && (
+              <span className="text-[0.65rem] font-bold px-3 py-1 rounded-full bg-secondary/20 backdrop-blur-[10px] border border-secondary/35 text-secondary uppercase tracking-widest">
+                Research
+              </span>
+            )}
             <span className="text-xs font-medium px-3 py-1 rounded-full bg-[rgba(5,5,5,0.7)] backdrop-blur-[10px] border border-[rgba(255,255,255,0.08)] text-text-2 uppercase tracking-wider">
-              {getCategoryLabel(project.category[0] ?? "featured")}
+              {project.isResearch
+                ? getResearchKindLabel(project.researchKind)
+                : getCategoryLabel(project.category[0] ?? "featured")}
             </span>
           </div>
 
@@ -73,7 +82,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Content */}
         <div className="p-6 flex flex-col gap-4 flex-grow">
-          <p className="text-xs text-primary font-medium uppercase tracking-widest">{date}</p>
+          <p className="text-xs text-primary font-medium uppercase tracking-widest">
+            {project.isResearch && project.org ? project.org : date}
+          </p>
 
           <h3 className="text-white font-semibold text-[1.25rem] leading-snug tracking-tight group-hover:text-primary transition-colors duration-300">
             {title}
@@ -101,6 +112,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 className="flex items-center gap-1.5 text-xs text-text-2 hover:text-primary transition-colors no-underline"
               >
                 <Github size={13} /> GitHub
+              </a>
+            )}
+            {project.paperHref && (
+              <a
+                href={assetPath(project.paperHref)}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 text-xs text-text-2 hover:text-secondary transition-colors no-underline"
+              >
+                <ExternalLink size={13} /> Paper
               </a>
             )}
             {demo && (

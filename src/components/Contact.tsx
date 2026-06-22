@@ -1,45 +1,108 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Send, Loader2, CheckCircle, FileText } from "lucide-react";
+import { Mail, MapPin, Send, Loader2, CheckCircle, FileText, AlertCircle } from "lucide-react";
 import { socialLinks } from "@/data/nav";
 import { resumeUrl } from "@/data/experience";
+import {
+  contactEmail,
+  contactFormEndpoint,
+  contactFormUrl,
+  formActivateUrl,
+  contactMailto,
+} from "@/data/contact";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import SectionHeader from "./motion/SectionHeader";
 import FadeUp from "./motion/FadeUp";
 
-type Status = "idle" | "sending" | "sent";
+type Status = "idle" | "sending" | "sent" | "pending" | "error";
 
 interface ContactItem {
   Icon: typeof Mail;
   label: string;
   value: string;
-  href:  string | null;
+  href: string | null;
 }
 
 const contactItems: ContactItem[] = [
-  { Icon: Mail,      label: "Email",    value: "drushikesh0105@gmail.com",  href: "mailto:drushikesh0105@gmail.com" },
-  { Icon: MapPin,    label: "Location", value: "Bengaluru, India",           href: null },
+  { Icon: Mail, label: "Email", value: contactEmail, href: contactMailto },
+  { Icon: MapPin, label: "Location", value: "Bengaluru, India", href: null },
 ];
 
+function buildMailtoFallback(form: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}) {
+  const subject = encodeURIComponent(`[Portfolio] ${form.subject}`);
+  const body = encodeURIComponent(
+    `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+  );
+  return `${contactMailto}?subject=${subject}&body=${body}`;
+}
+
 export default function Contact() {
-  const [form, setForm]     = useState({ name: "", email: "", subject: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) { alert("Enter a valid email."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      setErrorMessage("Enter a valid email address.");
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
-    setTimeout(() => {
+    setErrorMessage("");
+
+    try {
+      const response = await fetch(contactFormEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+          _subject: `Portfolio inquiry from ${form.name}: ${form.subject}`,
+          _template: "table",
+          _url: contactFormUrl,
+        }),
+      });
+
+      const data = (await response.json()) as { success?: string; message?: string };
+
+      if (!response.ok) {
+        throw new Error(data.message ?? "Delivery failed");
+      }
+
+      if (data.success === "false") {
+        const needsActivation = /activation|activate/i.test(data.message ?? "");
+        if (needsActivation) {
+          setStatus("pending");
+          return;
+        }
+        throw new Error(data.message ?? "Delivery failed");
+      }
+
       setStatus("sent");
       setForm({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setStatus("idle"), 4000);
-    }, 1800);
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch {
+      window.location.href = buildMailtoFallback(form);
+      setStatus("idle");
+    }
   };
 
   return (
@@ -57,13 +120,13 @@ export default function Contact() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-5xl mx-auto">
-          {/* Left — Info & CTA links */}
           <FadeUp>
             <div className="space-y-10">
               <div>
                 <h3 className="text-white font-semibold text-2xl mb-4">Let&apos;s Connect</h3>
                 <p className="text-text-2 leading-relaxed font-light text-lg">
-                  I&apos;m always interested in hearing about new projects and opportunities, especially those that involve innovative hardware and software solutions.
+                  I&apos;m always interested in hearing about new projects and opportunities,
+                  especially those that involve innovative hardware and software solutions.
                 </p>
               </div>
 
@@ -74,9 +137,14 @@ export default function Contact() {
                       <Icon size={18} className="text-primary" />
                     </div>
                     <div>
-                      <h4 className="text-text-3 text-xs font-medium mb-1 uppercase tracking-widest">{label}</h4>
+                      <h4 className="text-text-3 text-xs font-medium mb-1 uppercase tracking-widest">
+                        {label}
+                      </h4>
                       {href ? (
-                        <a href={href} className="text-text-2 hover:text-white transition-colors font-light no-underline text-base">
+                        <a
+                          href={href}
+                          className="text-text-2 hover:text-white transition-colors font-light no-underline text-base"
+                        >
                           {value}
                         </a>
                       ) : (
@@ -87,7 +155,6 @@ export default function Contact() {
                 ))}
               </div>
 
-              {/* Social + Resume CTA */}
               <div className="pt-6 border-t border-[rgba(255,255,255,0.08)]">
                 <h4 className="text-white font-semibold mb-5">Follow Along</h4>
                 <div className="flex flex-wrap gap-3">
@@ -118,35 +185,124 @@ export default function Contact() {
             </div>
           </FadeUp>
 
-          {/* Right — Form */}
           <FadeUp delay={0.15}>
             <div className="glass-card rounded-2xl p-8 md:p-10 border-glow">
               <form className="flex flex-col gap-5" onSubmit={onSubmit} suppressHydrationWarning>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-text-3 text-xs font-medium uppercase tracking-widest">Name</label>
-                    <Input id="name" name="name" required value={form.name} onChange={onChange} placeholder="Your name" />
+                    <label htmlFor="name" className="text-text-3 text-xs font-medium uppercase tracking-widest">
+                      Name
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      required
+                      value={form.name}
+                      onChange={onChange}
+                      placeholder="Your name"
+                    />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-text-3 text-xs font-medium uppercase tracking-widest">Email</label>
-                    <Input id="email" name="email" type="email" required value={form.email} onChange={onChange} placeholder="you@example.com" />
+                    <label htmlFor="email" className="text-text-3 text-xs font-medium uppercase tracking-widest">
+                      Email
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={onChange}
+                      placeholder="you@example.com"
+                    />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="subject" className="text-text-3 text-xs font-medium uppercase tracking-widest">Subject</label>
-                  <Input id="subject" name="subject" required value={form.subject} onChange={onChange} placeholder="Project inquiry" />
+                  <label htmlFor="subject" className="text-text-3 text-xs font-medium uppercase tracking-widest">
+                    Subject
+                  </label>
+                  <Input
+                    id="subject"
+                    name="subject"
+                    required
+                    value={form.subject}
+                    onChange={onChange}
+                    placeholder="Project inquiry"
+                  />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-text-3 text-xs font-medium uppercase tracking-widest">Message</label>
-                  <Textarea id="message" name="message" rows={5} required value={form.message} onChange={onChange} placeholder="Tell me about your project..." />
+                  <label htmlFor="message" className="text-text-3 text-xs font-medium uppercase tracking-widest">
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    value={form.message}
+                    onChange={onChange}
+                    placeholder="Tell me about your project..."
+                  />
                 </div>
 
+                {status === "error" && errorMessage && (
+                  <p className="flex items-center gap-2 text-sm text-red-400">
+                    <AlertCircle size={14} />
+                    {errorMessage}
+                  </p>
+                )}
+
+                {status === "pending" && (
+                  <p className="text-sm text-amber-300/90 leading-relaxed">
+                    FormSubmit needs one-time activation. Check{" "}
+                    <strong className="text-white font-medium">{contactEmail}</strong>{" "}
+                    (Spam, Promotions, All Mail) for an email from FormSubmit and click{" "}
+                    <strong className="text-white font-medium">Activate Form</strong>.
+                    Still nothing?{" "}
+                    <a
+                      href={formActivateUrl}
+                      className="text-primary hover:text-white underline underline-offset-2"
+                    >
+                      Open the activation page
+                    </a>{" "}
+                    and submit once.
+                  </p>
+                )}
+
+                {status === "sent" && (
+                  <p className="text-sm text-emerald-400">
+                    Message sent — I&apos;ll get back to you soon.
+                  </p>
+                )}
+
                 <Button type="submit" disabled={status === "sending"} className="mt-2">
-                  {status === "idle"    && <><Send    size={16} /> Send Message</>}
-                  {status === "sending" && <><Loader2 size={16} className="animate-spin" /> Sending...</>}
-                  {status === "sent"    && <><CheckCircle size={16} /> Message Sent!</>}
+                  {status === "idle" && (
+                    <>
+                      <Send size={16} /> Send Message
+                    </>
+                  )}
+                  {status === "sending" && (
+                    <>
+                      <Loader2 size={16} className="animate-spin" /> Sending...
+                    </>
+                  )}
+                  {status === "sent" && (
+                    <>
+                      <CheckCircle size={16} /> Message Sent!
+                    </>
+                  )}
+                  {status === "pending" && (
+                    <>
+                      <Mail size={16} /> Check Email to Activate
+                    </>
+                  )}
+                  {status === "error" && (
+                    <>
+                      <Send size={16} /> Try Again
+                    </>
+                  )}
                 </Button>
               </form>
             </div>

@@ -1,3 +1,5 @@
+import { researchItems } from "./research";
+
 export interface Project {
   title: string;
   description: string;
@@ -10,6 +12,10 @@ export interface Project {
   featured: boolean;
   longDescription?: string[];
   screenshots?: string[];
+  isResearch?: boolean;
+  researchKind?: "collaboration" | "project" | "publication";
+  org?: string;
+  paperHref?: string;
 }
 
 export interface FilterCategory {
@@ -46,7 +52,7 @@ export const projects: Project[] = [
       "FreeRTOS-powered ESP32 system for non-line-of-sight human detection via microwave Doppler radar — extracts breathing and heartbeat through walls with a tactical WebSocket dashboard.",
     image: "/project-images/hawk-setup.png",
     date: "May 2026",
-    category: ["embedded"],
+    category: ["comms-rf", "embedded"],
     tags: ["ESP32", "FreeRTOS", "FFT", "Microwave Radar", "WebSocket"],
     github:
       "https://github.com/rushikesh-D69/H.A.W.K-HumanActivityDetectionThroughWallsUsingMicrowaveKinetics",
@@ -349,11 +355,216 @@ export const projects: Project[] = [
     demo: null,
     featured: false,
   },
+  {
+    title: "AI-Based BLDC Fault Detection",
+    description:
+      "MATLAB/Simulink BLDC motor drive testbed with 52-feature hybrid vectors — ANN, SVM, RF, and LSTM classifiers benchmarked against 3-sigma threshold detection across 144 fault scenarios.",
+    image: "/project-images/megamind-bldc-fault.png",
+    date: "Mar 2026",
+    category: ["ml", "embedded"],
+    tags: ["MATLAB", "Simulink", "BLDC", "Fault Detection", "LSTM"],
+    github: null,
+    demo: null,
+    featured: false,
+    longDescription: [
+      "High-fidelity d-q frame BLDC model with cascaded PID speed and current loops under 10 kHz PWM and 50 kHz sampling.",
+      "Five structured fault categories injected at three severity levels across speed and load sweeps.",
+      "Hybrid time- and frequency-domain feature extraction feeding four AI classifier families.",
+      "Benchmarked via accuracy, F1, FAR, MDR, and detection delay against conventional threshold monitoring.",
+    ],
+    screenshots: [
+      "/project-images/megamind-bldc-fault.png",
+      "/project-images/megamind-aifault-doc.png",
+    ],
+  },
+  {
+    title: "Hierarchical EMS Microgrid Control",
+    description:
+      "Simulink microgrid energy management system with PV, BESS, load shedding, and rule-based EMS optimizer — adapted from MATLAB resynchronization example for 400 V / 50 Hz operation.",
+    image: "/project-images/megamind-microgrid-ems.png",
+    date: "Feb 2026",
+    category: ["embedded"],
+    tags: ["MATLAB", "Simulink", "Microgrid", "EMS", "BESS"],
+    github: null,
+    demo: null,
+    featured: false,
+    longDescription: [
+      "Hierarchical EMS replaces operator control room with cost-aware dispatch and load-shedding logic.",
+      "PV plant, BESS controller, and substation PCC breaker retuned for European grid parameters.",
+      "Scenario simulations compare islanded, grid-connected, and fault-recovery operating modes.",
+    ],
+    screenshots: [
+      "/project-images/megamind-microgrid-ems.png",
+      "/project-images/megamind-microgrid-scenario.png",
+    ],
+  },
+  {
+    title: "E-Bike System Modeling & Simulation",
+    description:
+      "Academic-grade MATLAB/Simulink E-Bike drivetrain — Shepherd battery model, FOC-controlled PMSM, longitudinal dynamics, and 4-level cadence assist with 28.4% validated energy efficiency gain.",
+    image: "/project-images/megamind-ebike-simulation.png",
+    date: "May 2026",
+    category: ["embedded"],
+    tags: ["MATLAB", "Simulink", "FOC", "PMSM", "E-Bike"],
+    github: null,
+    demo: null,
+    featured: false,
+    longDescription: [
+      "3-level block hierarchy isolating battery, motor, vehicle, and pedelec assist subsystems.",
+      "Dynamic Shepherd Li-ion model with polarization and exponential discharge zones.",
+      "Dual-loop FOC vector control with quadrature current saturation for cadence-based assist.",
+      "300-second urban riding cycle validation against uncontrolled baseline under grade and braking events.",
+    ],
+    screenshots: [
+      "/project-images/megamind-ebike-simulation.png",
+      "/project-images/megamind-ebike-doc.png",
+    ],
+  },
+  {
+    title: "Digital Logic Simulation (Proteus)",
+    description:
+      "Proteus Design Suite digital logic simulation project — schematic capture, timing verification, and virtual testbench validation for combinational and sequential circuit blocks.",
+    image: "/project-images/megamind-fib-serqer.png",
+    date: "Jun 2025",
+    category: ["analog"],
+    tags: ["Proteus", "Digital Logic", "Simulation"],
+    github: null,
+    demo: null,
+    featured: false,
+    screenshots: ["/project-images/megamind-fib-serqer.png"],
+  },
+  {
+    title: "ML Resource Allocation for IoT with Hardware Imperfection",
+    description:
+      "DQN-based dynamic resource allocation for IoT networks modelling amplifier non-linearity, phase noise, ADC quantisation, and I/Q imbalance — Simulink + Python bridge with hardware-impairment-aware reward shaping.",
+    image: "/project-images/megamind-iot-env.png",
+    date: "Mar 2026",
+    category: ["comms-rf", "ml"],
+    tags: ["Python", "MATLAB", "DQN", "IoT", "Simulink"],
+    github: null,
+    demo: null,
+    featured: false,
+    longDescription: [
+      "IoTEnv state space embeds per-device hardware impairment factor κ alongside channel, queue, and battery states.",
+      "Deep Q-Network agent optimises bandwidth and power allocation under Rayleigh fading.",
+      "Simulink–Python co-simulation bridge for closed-loop policy evaluation.",
+      "Benchmarked against conventional allocators that assume ideal transceiver hardware.",
+    ],
+    screenshots: [
+      "/project-images/megamind-iot-env.png",
+      "/project-images/megamind-iot-env-arch.png",
+      "/project-images/megamind-iot-env-doc.png",
+    ],
+  },
+  {
+    title: "AC–DC Rectifier Circuit Analysis",
+    description:
+      "Qucs circuit simulation and MATLAB post-processing of rectifier output — envelope detection, ripple quantification, FFT harmonic analysis, and DC power extraction from exported waveforms.",
+    image: "/project-images/megamind-rectifier.png",
+    date: "Apr 2026",
+    category: ["analog"],
+    tags: ["Qucs", "MATLAB", "Power Electronics", "FFT"],
+    github: null,
+    demo: null,
+    featured: false,
+    screenshots: [
+      "/project-images/megamind-rectifier.png",
+      "/project-images/megamind-rectifier-signal.png",
+    ],
+  },
+  {
+    title: "Double-RIS SISO Wireless System Analysis",
+    description:
+      "MATLAB Monte Carlo analysis of double reconfigurable intelligent surface (RIS) assisted SISO links — spatial correlation, array size scaling, SNR/rate curves, and joint active-passive beamforming.",
+    image: "/project-images/megamind-double-ris.png",
+    date: "Jan 2026",
+    category: ["comms-rf"],
+    tags: ["MATLAB", "RIS", "Wireless", "Beamforming"],
+    github: null,
+    demo: null,
+    featured: false,
+    screenshots: [
+      "/project-images/megamind-double-ris.png",
+      "/project-images/megamind-siso-doc.png",
+    ],
+  },
+  {
+    title: "Phase Noise Impact on RIS-Assisted SISO",
+    description:
+      "Analytical and Monte Carlo study of oscillator phase noise degradation in RIS-assisted single-user SISO systems — SNR, ergodic rate, outage probability, and coherence metric validation at 2.4 GHz.",
+    image: "/project-images/megamind-ris-phasenoise.png",
+    date: "Apr 2026",
+    category: ["comms-rf"],
+    tags: ["MATLAB", "RIS", "Phase Noise", "Wireless"],
+    github: null,
+    demo: null,
+    featured: false,
+    screenshots: ["/project-images/megamind-ris-phasenoise.png"],
+  },
+  {
+    title: "PS Space Technology Testbench",
+    description:
+      "Space technology testbench design for PS competition — system overview, team presentation, and round-1 documentation for satellite/space subsystem validation concepts.",
+    image: "/project-images/megamind-testbench.png",
+    date: "Dec 2025",
+    category: ["embedded"],
+    tags: ["Space Systems", "Testbench", "Documentation"],
+    github: null,
+    demo: null,
+    featured: false,
+    screenshots: [
+      "/project-images/megamind-testbench.png",
+      "/project-images/megamind-testbench-overview.png",
+    ],
+  },
+  {
+    title: "ML-Based Web Attack Detection (CSIC)",
+    description:
+      "HTTP attack classification on the CSIC 2010 dataset — feature engineering, SMOTE balancing, and Random Forest / XGBoost / KNN benchmarking with ROC analysis and fairness testing across sensitive attributes.",
+    image: "/project-images/megamind-uk-pream.png",
+    date: "Jul 2025",
+    category: ["ml"],
+    tags: ["Python", "scikit-learn", "XGBoost", "Cybersecurity"],
+    github: null,
+    demo: null,
+    featured: false,
+    screenshots: ["/project-images/megamind-uk-pream.png"],
+  },
+  {
+    title: "Flight Fare Prediction via ML",
+    description:
+      "End-to-end regression pipeline on airline fare data — feature engineering on routes, stops, and duration with Random Forest, XGBoost, and linear baselines compared via MAE, RMSE, and R² metrics.",
+    image: "/project-images/megamind-uk-satish.png",
+    date: "Jul 2025",
+    category: ["ml"],
+    tags: ["Python", "XGBoost", "Regression", "Feature Engineering"],
+    github: null,
+    demo: null,
+    featured: false,
+    screenshots: ["/project-images/megamind-uk-satish.png"],
+  },
+  {
+    title: "AI Predictive Maintenance — Hybrid XGBoost Model",
+    description:
+      "Provenance-based attack detection using a hybrid XGBoost + Logistic Regression pipeline — tree leaf one-hot encoding, LSTM comparison, ROC evaluation, and SHAP-style leaf-node explainability.",
+    image: "/project-images/megamind-uk-srikanth.png",
+    date: "Aug 2025",
+    category: ["ml"],
+    tags: ["Python", "XGBoost", "LSTM", "Predictive Maintenance"],
+    github: null,
+    demo: null,
+    featured: false,
+    screenshots: [
+      "/project-images/megamind-uk-srikanth.png",
+      "/project-images/megamind-uk-srikanth-hybrid.png",
+    ],
+  },
 ];
 
 export const filterCategories: FilterCategory[] = [
   { label: "All", value: "all" },
   { label: "Embedded & IoT", value: "embedded" },
+  { label: "Communications & RF", value: "comms-rf" },
   { label: "VLSI", value: "vlsi" },
   { label: "Analog", value: "analog" },
   { label: "Machine Learning", value: "ml" },
@@ -374,6 +585,11 @@ export const categoryGroups: {
     value: "embedded",
     label: "Embedded & IoT",
     description: "Firmware, microcontrollers, sensors & connected edge systems",
+  },
+  {
+    value: "comms-rf",
+    label: "Communications & RF",
+    description: "Wireless links, RIS/beamforming, radar, and RF system modelling",
   },
   {
     value: "vlsi",
@@ -405,6 +621,54 @@ export function groupProjectsByCategory<T extends Project>(projectList: T[]) {
   }
 
   return groups;
+}
+
+export const researchKindLabel = {
+  collaboration: "Industry Research",
+  project: "Open Research",
+  publication: "Conference Paper",
+} as const;
+
+function researchCategories(title: string, kind: Project["researchKind"]): string[] {
+  if (kind === "publication") return ["vlsi"];
+  if (title.includes("Exoplanet")) return ["ml"];
+  if (kind === "collaboration") return ["comms-rf", "embedded"];
+  return ["ml"];
+}
+
+export const researchProjects: Project[] = researchItems.map((item) => ({
+  title: item.title,
+  description: item.description,
+  image: item.image ?? "/project-images/water-telescope.png",
+  date: item.period,
+  category: researchCategories(item.title, item.kind),
+  tags: item.tags,
+  github: item.href ?? null,
+  demo: null,
+  featured: false,
+  isResearch: true,
+  researchKind: item.kind,
+  org: item.org,
+  paperHref: item.paperHref,
+  longDescription: [item.description],
+}));
+
+/** Full archive — research entries first, then built systems */
+export const allProjects: Project[] = [...researchProjects, ...projects];
+
+export function getResearchKindLabel(kind: Project["researchKind"]): string {
+  if (!kind) return "Research";
+  return researchKindLabel[kind];
+}
+
+export function partitionArchiveProjects<T extends Project>(projectList: T[]) {
+  const research = projectList.filter((p) => p.isResearch);
+  const built = projectList.filter((p) => !p.isResearch);
+  return {
+    research,
+    grouped: groupProjectsByCategory(built),
+    sorted: [...research, ...built] as T[],
+  };
 }
 
 export const featuredProjects = projects.filter((p) => p.featured);

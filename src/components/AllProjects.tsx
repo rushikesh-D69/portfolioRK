@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Search, ArrowLeft } from "lucide-react";
-import { projects, filterCategories, groupProjectsByCategory } from "@/data/projects";
+import { allProjects, filterCategories, partitionArchiveProjects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,17 +12,18 @@ export default function AllProjects() {
   const [activeFilter, setFilter] = useState("all");
   const [search, setSearch]       = useState("");
 
-  const filtered = projects.filter((p) => {
+  const filtered = allProjects.filter((p) => {
     const matchCat    = activeFilter === "all" || p.category.includes(activeFilter);
     const q           = search.toLowerCase();
     const matchSearch = !q ||
       p.title.toLowerCase().includes(q) ||
       p.description.toLowerCase().includes(q) ||
+      p.org?.toLowerCase().includes(q) ||
       p.tags.some((t) => t.toLowerCase().includes(q));
     return matchCat && matchSearch;
   });
 
-  const grouped = groupProjectsByCategory(filtered);
+  const { research, grouped, sorted } = partitionArchiveProjects(filtered);
   const showGrouped = activeFilter === "all" && !search;
 
   return (
@@ -65,6 +66,21 @@ export default function AllProjects() {
         {filtered.length > 0 ? (
           showGrouped ? (
             <div className="space-y-16 mb-16">
+              {research.length > 0 && (
+                <div>
+                  <div className="mb-8 pb-4 border-b border-[rgba(255,255,255,0.06)]">
+                    <h3 className="text-white font-bold text-lg tracking-tight">Applied Research</h3>
+                    <p className="text-text-3 text-sm mt-0.5">
+                      Industry collaborations, open research, and peer-reviewed technical work
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {research.map((project) => (
+                      <ProjectCard key={project.title} project={project} />
+                    ))}
+                  </div>
+                </div>
+              )}
               {grouped.map(({ group, projects: groupProjects }) => (
                 <div key={group.value}>
                   <div className="mb-8 pb-4 border-b border-[rgba(255,255,255,0.06)]">
@@ -81,7 +97,7 @@ export default function AllProjects() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              {filtered.map((project) => (
+              {sorted.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}
             </div>

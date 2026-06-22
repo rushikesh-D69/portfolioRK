@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import { X, Github, ExternalLink, Calendar, Layers } from "lucide-react";
+import { X, Github, ExternalLink, Calendar, Layers, FileText, FlaskConical } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { Project } from "@/data/projects";
+import { getCategoryLabel, getResearchKindLabel, type Project } from "@/data/projects";
 import { assetPath } from "@/lib/site";
 
 interface ProjectModalProps {
@@ -70,15 +70,25 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         <div className="p-6 sm:p-8 flex flex-col gap-6 -mt-8 relative z-10 rounded-t-3xl">
           {/* Meta Info */}
           <div className="flex flex-wrap items-center gap-3">
+            {project.isResearch && (
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-secondary/15 border border-secondary/30 text-secondary uppercase tracking-widest">
+                <FlaskConical size={12} />
+                Research · {getResearchKindLabel(project.researchKind)}
+              </span>
+            )}
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary">
               <Calendar size={12} />
               {date}
             </span>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent uppercase tracking-wider">
               <Layers size={12} />
-              {project.category.join(" / ")}
+              {project.category.map(getCategoryLabel).join(" / ")}
             </span>
           </div>
+
+          {project.isResearch && project.org && (
+            <p className="text-text-3 text-sm font-medium -mt-2">{project.org}</p>
+          )}
 
           {/* Title */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-none">
@@ -93,7 +103,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Detailed Points ("Tome of Knowledge") */}
           <div className="flex flex-col gap-4">
             <h3 className="text-white font-semibold text-lg border-b border-border-c/50 pb-2">
-              Technical Achievements & Details
+              {project.isResearch ? "Research Summary" : "Technical Achievements & Details"}
             </h3>
             <ul className="space-y-3.5">
               {longDescription && longDescription.length > 0 ? (
@@ -136,6 +146,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <a href={github} target="_blank" rel="noreferrer">
                   <Github size={18} />
                   Code Repository
+                </a>
+              </Button>
+            )}
+            {project.paperHref && (
+              <Button asChild variant="primary" className="gap-2">
+                <a href={assetPath(project.paperHref)} target="_blank" rel="noreferrer">
+                  <FileText size={18} />
+                  Read Paper
                 </a>
               </Button>
             )}

@@ -7,6 +7,7 @@ import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 import FadeUp from "./motion/FadeUp";
 import Typewriter from "./Typewriter";
 import CredibilityStrip from "./CredibilityStrip";
+import { contactMailto } from "@/data/contact";
 import { heroTypewriterTexts } from "@/data/nav";
 
 const scenePlaceholder = (
@@ -90,7 +91,7 @@ export default function Hero() {
                 {[
                   { href: "https://github.com/rushikesh-D69", Icon: Github, label: "GitHub" },
                   { href: "https://www.linkedin.com/in/d-rushikesh/", Icon: Linkedin, label: "LinkedIn" },
-                  { href: "mailto:drushikesh0105@gmail.com", Icon: Mail, label: "Email" },
+                  { href: contactMailto, Icon: Mail, label: "Email" },
                 ].map(({ href, Icon, label }) => (
                   <a
                     key={label}
