@@ -1,5 +1,6 @@
 # portfolioRK
 
+ 
 Personal portfolio — Next.js 15 static export deployed to GitHub Pages at [rushikesh-D69.github.io/portfolioRK](https://rushikesh-D69.github.io/portfolioRK).
 
 ## Stack
