@@ -27,7 +27,15 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
   },
-  icons: { icon: `${BASE_PATH}/favicon.svg` },
+  icons: {
+    icon: [
+      { url: `${BASE_PATH}/favicon.png`, sizes: "512x512", type: "image/png" },
+      { url: `${BASE_PATH}/favicon-32.png`, sizes: "32x32", type: "image/png" },
+      { url: `${BASE_PATH}/favicon-16.png`, sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: `${BASE_PATH}/favicon.png`, sizes: "512x512", type: "image/png" }],
+    shortcut: `${BASE_PATH}/favicon.png`,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -288,18 +288,6 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    title: "AI Telescope Target Prioritization",
-    description:
-      "AI-driven pipeline for ranking telescope observation targets — habitability prediction, Pareto frontier analysis, and interactive Streamlit dashboard for exoplanet survey planning.",
-    image: "/project-images/water-telescope.png",
-    date: "Jun 2026",
-    category: ["ml"],
-    tags: ["Python", "Jupyter", "Streamlit", "Astronomy"],
-    github: "https://github.com/rushikesh-D69/water",
-    demo: null,
-    featured: false,
-  },
-  {
     title: "TARA – CARLA Simulation Companion",
     description:
       "Photorealistic CARLA simulator for the TARA ADAS decision stack — validates lane detection, TSR, ACC, and TLR pipelines before hardware deployment.",
@@ -430,19 +418,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "Digital Logic Simulation (Proteus)",
-    description:
-      "Proteus Design Suite digital logic simulation project — schematic capture, timing verification, and virtual testbench validation for combinational and sequential circuit blocks.",
-    image: "/project-images/megamind-fib-serqer.png",
-    date: "Jun 2025",
-    category: ["analog"],
-    tags: ["Proteus", "Digital Logic", "Simulation"],
-    github: null,
-    demo: null,
-    featured: false,
-    screenshots: ["/project-images/megamind-fib-serqer.png"],
-  },
-  {
     title: "ML Resource Allocation for IoT with Hardware Imperfection",
     description:
       "DQN-based dynamic resource allocation for IoT networks modelling amplifier non-linearity, phase noise, ADC quantisation, and I/Q imbalance — Simulink + Python bridge with hardware-impairment-aware reward shaping.",
@@ -509,22 +484,6 @@ export const projects: Project[] = [
     demo: null,
     featured: false,
     screenshots: ["/project-images/megamind-ris-phasenoise.png"],
-  },
-  {
-    title: "PS Space Technology Testbench",
-    description:
-      "Space technology testbench design for PS competition — system overview, team presentation, and round-1 documentation for satellite/space subsystem validation concepts.",
-    image: "/project-images/megamind-testbench.png",
-    date: "Dec 2025",
-    category: ["embedded"],
-    tags: ["Space Systems", "Testbench", "Documentation"],
-    github: null,
-    demo: null,
-    featured: false,
-    screenshots: [
-      "/project-images/megamind-testbench.png",
-      "/project-images/megamind-testbench-overview.png",
-    ],
   },
   {
     title: "ML-Based Web Attack Detection (CSIC)",

@@ -35,12 +35,12 @@ export const researchItems: ResearchItem[] = [
     ],
   },
   {
-    title: "Autonomous Exoplanet Observation Scheduling",
+    title: "Autonomous Exoplanet Observation Scheduling & AI Target Prioritization",
     org: "NASA Exoplanet Archive · Information-Theoretic ML",
     period: "2025 – 2026",
     description:
-      "Two-stage active exploration framework for telescope target prioritization under uncertainty — ensemble ML on 5,500+ exoplanets, adaptive scheduling at 99.87% of oracle reference, and an interactive Three.js + Plotly dashboard.",
-    tags: ["LightGBM", "Active Learning", "Three.js", "Streamlit"],
+      "Two-stage active exploration framework for telescope target prioritization under uncertainty — ensemble ML on 5,500+ exoplanets, adaptive scheduling at 99.87% of oracle reference. Integrates an AI-driven habitability prediction pipeline, Pareto frontier analysis, and an interactive Three.js + Plotly + Streamlit dashboard for exoplanet survey planning.",
+    tags: ["LightGBM", "Active Learning", "Three.js", "Streamlit", "Python", "Jupyter", "Astronomy"],
     kind: "project",
     href: "https://github.com/rushikesh-D69/water",
     image: "/research/observability-analysis.png",
@@ -55,10 +55,10 @@ export const researchItems: ResearchItem[] = [
     org: "IEEE VLSI SATA 2026 · Amrita Bengaluru",
     period: "Jun 12 – 13, 2026",
     description:
-      "Published and presented at the 6th IEEE International Conference on VLSI Systems, Architecture, Technology and Applications (VLSI SATA). Proposes a delay-optimized dynamic comparator with temperature compensation for high-speed, low-power CMOS sensing and ADC front-ends.",
-    tags: ["Dynamic Comparator", "CMOS", "VLSI", "Temperature Compensation"],
+      "Published at the 2026 IEEE 6th International Conference on VLSI Systems, Architecture, Technology and Applications (VLSI SATA). Presents a low-power, temperature-compensated high-speed dynamic comparator for ADC applications. Designed and simulated using 45 nm CMOS technology in Cadence Virtuoso, the proposed architecture integrates a cascode cross-coupled preamplifier with a temperature-stable latch, achieving 56.22% lower power consumption while improving delay stability under temperature variations. Well suited for low-power SAR and Flash ADCs used in wireless communication, edge computing, and sensor systems.",
+    tags: ["Dynamic Comparator", "CMOS", "VLSI", "Temperature Compensation", "45nm", "Cadence Virtuoso", "SAR ADC"],
     kind: "publication",
-    paperHref: "/papers/dynamic-comparator-vlsi-sata-2026.pdf",
+    paperHref: "https://ieeexplore.ieee.org/document/11610524",
     image: "/research/dynamic-comparator-schematic.png",
     logos: [
       {

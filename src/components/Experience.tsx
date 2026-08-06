@@ -27,24 +27,28 @@ export default function Experience() {
         />
 
         <div className="relative mt-4 md:mt-8">
-          {/* Mobile: horizontal scroll · Desktop: 3-column grid */}
-          <div className="overflow-x-auto pb-6 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide snap-x snap-mandatory">
-            <div className="relative min-w-[920px] md:min-w-0">
+          {/* Always horizontally scrollable — fits 4 cards without wrapping */}
+          <div className="overflow-x-auto pb-6 -mx-6 px-6 md:-mx-10 md:px-10 scrollbar-hide snap-x snap-mandatory">
+            <div className="relative" style={{ minWidth: "max-content" }}>
               {/* Track line */}
               <div
                 className="timeline-track-h hidden md:block"
                 aria-hidden
+                style={{ left: "calc(12.5% + 0.5rem)", right: "calc(12.5% + 0.5rem)" }}
               />
 
               <StaggerChildren
-                className="grid grid-cols-3 gap-6 md:gap-8 relative"
+                className="flex gap-6 md:gap-8 relative"
                 stagger={0.1}
               >
                 {chronologicalItems.map((item, index) => {
                   const edu = isEducation(item.title);
                   return (
                     <StaggerItem key={`${item.company}-${item.period}`}>
-                      <div className="snap-start flex flex-col items-stretch h-full">
+                      <div
+                        className="snap-start flex flex-col items-stretch h-full"
+                        style={{ width: "min(76vw, 340px)" }}
+                      >
                         {/* Track node + year (desktop) */}
                         <div className="hidden md:flex flex-col items-center mb-8">
                           <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-text-3 mb-3">
@@ -113,7 +117,7 @@ export default function Experience() {
             </div>
           </div>
 
-          <p className="text-text-3 text-xs text-center mt-2 md:hidden uppercase tracking-widest">
+          <p className="text-text-3 text-xs text-center mt-2 uppercase tracking-widest">
             Swipe to explore →
           </p>
         </div>

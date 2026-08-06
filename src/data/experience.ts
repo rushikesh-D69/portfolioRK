@@ -29,15 +29,29 @@ export const timelineItems: TimelineItem[] = [
     ],
   },
   {
+    title: "Embedded Systems Intern",
+    company: "Emertxe Information Technologies",
+    period: "Jun 2026 – Jul 2026",
+    location: "Bengaluru, Karnataka, India · Remote",
+    description:
+      "Completed a 4-week intensive internship in Embedded Systems covering microcontroller programming, embedded C, and hardware interfacing. Designed and developed a Real-Time Electric Vehicle Dashboard & ADAS Warning System.",
+    achievements: [
+      "Implemented real-time sensor interfacing and warning mechanisms for driver assistance applications",
+      "Strengthened practical knowledge of embedded programming, debugging, and system integration through hands-on project development",
+      "Successfully completed the internship demonstrating practical implementation skills in embedded system design",
+    ],
+  },
+  {
     title: "Embedded Systems Engineer Intern",
-    company: "MegaMind IT Services",
+    company: "MEGAMINDS IT SERVICES",
     period: "Jun 2025 – Jan 2026",
     location: "Remote",
     description:
-      "Bare-metal firmware development across ESP32 and ARM7 LPC2148 with interrupt-driven GPIO, PWM, and multi-protocol peripheral integration.",
+      "Embedded Systems Development Intern working on embedded systems, IoT, AI-driven edge applications and wireless communication simulations. Contributed to the design, simulation, and implementation of real-time embedded and intelligent systems including IoT resource allocation frameworks, AI-based fault detection, smart energy monitoring, and secure IoT communication architectures.",
     achievements: [
-      "Delivered 4+ sensor–actuator integration pipelines in C/C++, versioned via Git across prototype iterations",
-      "Cut hardware debug cycles by ~30% validating UART, SPI, and I2C timing with oscilloscope and logic analyser",
+      "Worked with ESP32, FreeRTOS, Python, MATLAB/Simulink, 5G technologies, and embedded C/C++ across IoT and edge AI projects",
+      "Assisted in system modeling, simulation analysis, documentation, and research-oriented technical implementations",
+      "Collaborated remotely within project deadlines on embedded and intelligent systems deliverables",
     ],
   },
   {
