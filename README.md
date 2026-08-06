@@ -1,7 +1,7 @@
 # portfolioRK
 
  
-Personal portfolio — Next.js 15 static export deployed to GitHub Pages at [rushikesh-D69.github.io/portfolioRK](https://protfoliodrk.netlify.app/#home).
+Personal portfolio — Next.js 15 static export deployed to GitHub Pages at [https://protfoliodrk.netlify.app/#home](https://protfoliodrk.netlify.app/#home).
 
 ## Stack
 
