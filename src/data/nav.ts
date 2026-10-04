@@ -24,6 +24,7 @@ export const navLinks: NavLink[] = [
 export const socialLinks: SocialLink[] = [
   { icon: "fab fa-github",   href: "https://github.com/rushikesh-D69",         label: "GitHub" },
   { icon: "fab fa-linkedin", href: "https://www.linkedin.com/in/d-rushikesh/", label: "LinkedIn" },
+  { icon: "fab fa-orcid", href: "https://orcid.org/0009-0000-2885-6941", label: "ORCID" },
   { icon: "fas fa-envelope", href: contactMailto, label: "Email" },
 ];
 

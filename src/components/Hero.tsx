@@ -1,9 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import { ChevronDown, Github, Linkedin, Mail, GraduationCap } from "lucide-react";
 import FadeUp from "./motion/FadeUp";
 import Typewriter from "./Typewriter";
 import CredibilityStrip from "./CredibilityStrip";
@@ -91,6 +91,7 @@ export default function Hero() {
                 {[
                   { href: "https://github.com/rushikesh-D69", Icon: Github, label: "GitHub" },
                   { href: "https://www.linkedin.com/in/d-rushikesh/", Icon: Linkedin, label: "LinkedIn" },
+                  { href: "https://orcid.org/0009-0000-2885-6941", Icon: GraduationCap, label: "ORCID" },
                   { href: contactMailto, Icon: Mail, label: "Email" },
                 ].map(({ href, Icon, label }) => (
                   <a
